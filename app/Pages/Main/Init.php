@@ -28,10 +28,13 @@ class Init extends \MFLPHP\Abstracts\PageController
     public function start()
     {
         if ($this->di->auth->isLogged()) {
+            $this->service->userinfo = $this->di->userinfo;
+
             $template_file = $this->view_prefix . 'main';
         } else {
-            $template_file = 'Pages/User/view_auth';
             $this->service->message = 'Необходимо войти в систему.';
+
+            $template_file = 'Pages/User/view_auth';
         }
 
         $this->service->uri   = $this->request->uri();
