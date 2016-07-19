@@ -1,0 +1,31 @@
+{
+    "name": "dimns/mflphp-project",
+    "description": "The skeleton of the application on MFLPHP.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitrii Shcherbakov",
+            "email": "info@bestion.ru",
+            "homepage": "http://bestion.ru",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MyApp\\": "app/",
+            "MFLPHP\\Configs\\": "app/Configs/"
+        }
+    },
+    "repositories": [
+        {
+            "_url": "C:\\Users\\DimNS\\Documents\\GoogleDrive\\htdocs\\DimNS\\MFLPHP",
+            "url": "D:\\OneDrive\\work\\htdocs\\dimns\\MFLPHP",
+            "type": "path"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "dimns/mflphp": "dev-master"
+    }
+}
