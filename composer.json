@@ -26,6 +26,6 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "dimns/mflphp": "dev-master"
+        "dimns/mflphp": "dev-develop"
     }
 }
