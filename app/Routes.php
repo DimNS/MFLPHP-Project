@@ -63,18 +63,18 @@ $klein->with('/user', function () use ($klein) {
 //      `Ybmd9'.JMML  JMML..JMML.  .JMML. `Mbmo  `Mbmo  MMbmmd'.JMMmmmmMMM .JMML.   .JMML.   `Ybmd9'.JMML.
 //                                                      MM
 //                                                    .JMML.
-$klein->onHttpError(function ($code, $router) {
+$klein->onHttpError(function ($code, $router) use ($di) {
     $router->service()->uri  = $router->request()->uri();
 
     switch ($code) {
         case 404:
             $template_file = '404';
-            $router->service()->title = 'Страница не найдена - ' . getenv('PROJECT_NAME');
+            $router->service()->title = 'Страница не найдена - ' . $di->auth->config->site_name;
             break;
 
         default:
             $template_file = 'error';
-            $router->service()->title = 'Произошла ошибка - ' . getenv('PROJECT_NAME');
+            $router->service()->title = 'Произошла ошибка - ' . $di->auth->config->site_name;
             break;
     }
 

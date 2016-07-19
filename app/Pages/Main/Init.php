@@ -38,7 +38,7 @@ class Init extends \MFLPHP\Abstracts\PageController
         }
 
         $this->service->uri   = $this->request->uri();
-        $this->service->title = getenv('PROJECT_NAME');
+        $this->service->title = $this->di->auth->config->site_name;
 
         $this->service->render(__DIR__ . '/../../' . $template_file . '.php');
     }

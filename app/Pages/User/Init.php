@@ -33,7 +33,7 @@ class Init extends \MFLPHP\Abstracts\PageController
         if ($result['access'] === 'granted') {
             $this->response->redirect(getenv('PATH_SHORT_ROOT'), 200);
         } else {
-            $this->service->title   = getenv('PROJECT_NAME');
+            $this->service->title   = $this->di->auth->config->site_name;
             $this->service->uri     = $this->request->uri();
             $this->service->message = $result['message'];
 
@@ -57,7 +57,7 @@ class Init extends \MFLPHP\Abstracts\PageController
         if ($result['access'] === 'granted') {
             $this->response->redirect(getenv('PATH_SHORT_ROOT'), 200);
         } else {
-            $this->service->title   = getenv('PROJECT_NAME');
+            $this->service->title   = $this->di->auth->config->site_name;
             $this->service->uri     = $this->request->uri();
             $this->service->message = $result['message'];
 
