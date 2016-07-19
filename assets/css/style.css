@@ -1,5 +1,20 @@
+/*
+                                 ,,
+                                 db
+
+    `7MMpMMMb.pMMMb.   ,6"Yb.  `7MM  `7MMpMMMb.
+      MM    MM    MM  8)   MM    MM    MM    MM
+      MM    MM    MM   ,pm9MM    MM    MM    MM
+      MM    MM    MM  8M   MM    MM    MM    MM
+    .JMML  JMML  JMML.`Moo9^Yo..JMML..JMML  JMML.
+*/
+
 body {
     font-size: 16px;
+}
+
+input {
+    box-sizing: border-box;
 }
 
 input[type="text"],
@@ -8,5 +23,60 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-    padding: 5px 40px;
+    padding: 5px 20px;
+}
+
+.clearfix() {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+/*
+                               mm                      mm
+                               MM                      MM
+   ,p6"bo   ,pW"Wq.`7MMpMMMb.mmMMmm .gP"Ya `7MMpMMMb.mmMMmm
+  6M'  OO  6W'   `Wb MM    MM  MM  ,M'   Yb  MM    MM  MM
+  8M       8M     M8 MM    MM  MM  8M""""""  MM    MM  MM
+  YM.    , YA.   ,A9 MM    MM  MM  YM.    ,  MM    MM  MM
+   YMbmd'   `Ybmd9'.JMML  JMML.`Mbmo`Mbmmd'.JMML  JMML.`Mbmo
+*/
+
+.content {padding: 20px;}
+
+/*
+        ,...
+      .d' ""
+      dM`
+     mMMmm,pW"Wq.`7Mb,od8 `7MMpMMMb.pMMMb.
+      MM 6W'   `Wb MM' "'   MM    MM    MM
+      MM 8M     M8 MM       MM    MM    MM
+      MM YA.   ,A9 MM       MM    MM    MM
+    .JMML.`Ybmd9'.JMML.   .JMML  JMML  JMML.
+*/
+
+.c-form input {
+    width: 250px;
+}
+
+.c-form__title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.c-form__block-separator {
+    padding: 90px 20px 0px 20px;
 }

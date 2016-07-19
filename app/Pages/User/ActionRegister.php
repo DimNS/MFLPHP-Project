@@ -1,0 +1,90 @@
+<?php
+/**
+ * Регистрация
+ *
+ * @version ===
+ * @author Дмитрий Щербаков <atomcms@ya.ru>
+ */
+
+namespace MyApp\Pages\User;
+
+use MFLPHP\Helpers;
+
+class ActionRegister
+{
+    /**
+     * @var object $di Контейнер
+     */
+    private $di;
+
+    /**
+     * Конструктор
+     *
+     * @param object $di Контейнер
+     *
+     * @return null
+     *
+     * @version ===
+     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     */
+    public function __construct($di)
+    {
+        $this->di = $di;
+    }
+
+    /**
+     * Выполним действие
+     *
+     * @param string $user_name  Имя пользователя
+     * @param string $user_email Адрес электронной почты
+     *
+     * @return array
+     *
+     * @version ===
+     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     */
+    public function run($user_name, $user_email)
+    {
+        $user = [
+            'access'  => 'denied',
+            'message' => '',
+        ];
+
+        // Создадим временный пароль
+        $length   = ($this->di->auth->config->password_min_score > 10 ? $this->di->auth->config->password_min_score : 10);
+        $password = $this->di->auth->getRandomKey($length);
+
+        // Добавим пользователя
+        $registerResult = $this->di->auth->register($user_email, $password, $password);
+
+        if ($registerResult['error'] === false) {
+            $user_id = $this->di->auth->getUID($user_email);
+            if ($user_id !== false) {
+                $user_info = \ORM::for_table('users_info')->create();
+                $user_info->uid        = $user_id;
+                $user_info->name       = $user_name;
+                $user_info->access     = 'user';
+                $user_info->created_at = Helpers\FormatTime::convert($this->di->cfg->time);
+                $user_info->save();
+
+                if (is_object($user_info) AND isset($user_info->id)) {
+                    // Войдем под этим пользователем
+                    $login  = new ActionLogin($this->di);
+                    $user = $login->run($user_email, $password);
+                } else {
+                    $user['message'] = 'Произошла ошибка при изменении данных. Попробуйте войти ещё раз.';
+                }
+            } else {
+                \ORM::for_table('users')
+                    ->where_equal('email', $user_email)
+                    ->delete();
+
+                $user['message'] = 'Данные пользователя не найдены. Попробуйте войти ещё раз.';
+            }
+        } else {
+            $user['message'] = $registerResult['message'];
+        }
+
+        return $user;
+    }
+}

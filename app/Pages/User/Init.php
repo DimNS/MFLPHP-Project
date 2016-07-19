@@ -18,7 +18,31 @@ class Init extends \MFLPHP\Abstracts\PageController
     private $view_prefix = 'Pages/User/view_';
 
     /**
-     * Авторизация
+     * Регистрация
+     *
+     * @return null
+     *
+     * @version ===
+     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     */
+    public function register()
+    {
+        $register = new ActionRegister($this->di);
+        $result   = $register->run($this->request->param('name'), $this->request->param('email'));
+
+        if ($result['access'] === 'granted') {
+            $this->response->redirect(getenv('PATH_SHORT_ROOT'), 200);
+        } else {
+            $this->service->title   = getenv('PROJECT_NAME');
+            $this->service->uri     = $this->request->uri();
+            $this->service->message = $result['message'];
+
+            $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'auth.php');
+        }
+    }
+
+    /**
+     * Аутентификация
      *
      * @return null
      *

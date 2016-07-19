@@ -8,22 +8,37 @@
 
 namespace MyApp;
 
+//
+//           AW
+//          ,M'
+//          MV
+//         AW
+//        ,M'
+//        MV
+//       AW
+//      ,M'
+//      MV
+//     AW
 $klein->respond('GET', '/', function ($request, $response, $service, $di) {
     $page = new Pages\Main\Init($request, $response, $service, $di);
     $page->start();
 });
 
+//
+//           AW
+//          ,M'
+//          MV
+//         AW`7MM  `7MM  ,pP"Ybd  .gP"Ya `7Mb,od8
+//        ,M'  MM    MM  8I   `" ,M'   Yb  MM' "'
+//        MV   MM    MM  `YMMMa. 8M""""""  MM
+//       AW    MM    MM  L.   I8 YM.    ,  MM
+//      ,M'    `Mbod"YML.M9mmmP'  `Mbmmd'.JMML.
+//      MV
+//     AW
 $klein->with('/user', function () use ($klein) {
-    $klein->respond('GET', '/', function ($request, $response, $service, $di) {
-        echo 'show profile';
-    });
-
-    $klein->respond('GET', '/activate', function ($request, $response, $service, $di) {
-        echo 'user_activate';
-    });
-
-    $klein->respond('GET', '/reset', function ($request, $response, $service, $di) {
-        echo 'user_reset';
+    $klein->respond('POST', '/register', function ($request, $response, $service, $di) {
+        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page->register();
     });
 
     $klein->respond('POST', '/login', function ($request, $response, $service, $di) {
