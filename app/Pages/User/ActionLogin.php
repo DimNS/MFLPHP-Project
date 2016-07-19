@@ -1,6 +1,6 @@
 <?php
 /**
- * Авторизация
+ * Аутентификация
  *
  * @version ===
  * @author Дмитрий Щербаков <atomcms@ya.ru>
@@ -52,7 +52,7 @@ class ActionLogin
 
         $loginResult = $this->di->auth->login($user_email, $user_pass, false);
 
-        if (!$loginResult['error']) {
+        if ($loginResult['error'] === false) {
             $user_id = $this->di->auth->getUID($user_email);
             if ($user_id !== false) {
                 $user_info = \ORM::for_table('users_info')
