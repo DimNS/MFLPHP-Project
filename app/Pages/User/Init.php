@@ -11,6 +11,13 @@ namespace MyApp\Pages\User;
 class Init extends \MFLPHP\Abstracts\PageController
 {
     /**
+     * Префикс для подстановки в путь до представления
+     *
+     * @var string
+     */
+    private $view_prefix = 'Pages/User/view_';
+
+    /**
      * Авторизация
      *
      * @return null
@@ -30,7 +37,7 @@ class Init extends \MFLPHP\Abstracts\PageController
             $this->service->uri     = $this->request->uri();
             $this->service->message = $result['message'];
 
-            $this->service->render(__DIR__ . '/../../Views/auth.php');
+            $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'auth.php');
         }
     }
 
