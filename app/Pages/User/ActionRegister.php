@@ -13,7 +13,9 @@ use MFLPHP\Helpers;
 class ActionRegister
 {
     /**
-     * @var object $di Контейнер
+     * Контейнер
+     *
+     * @var object
      */
     private $di;
 

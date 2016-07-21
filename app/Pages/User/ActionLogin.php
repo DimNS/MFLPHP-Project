@@ -13,7 +13,9 @@ use MFLPHP\Helpers;
 class ActionLogin
 {
     /**
-     * @var object $di Контейнер
+     * Контейнер
+     *
+     * @var object
      */
     private $di;
 

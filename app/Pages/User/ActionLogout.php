@@ -11,7 +11,9 @@ namespace MyApp\Pages\User;
 class ActionLogout
 {
     /**
-     * @var object $di Контейнер
+     * Контейнер
+     *
+     * @var object
      */
     private $di;
 
