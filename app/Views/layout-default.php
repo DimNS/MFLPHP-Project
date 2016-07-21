@@ -8,6 +8,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="_token" content="<?=$this->csrf_token?>">
 
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400|Roboto:400,700&subset=cyrillic-ext" rel="stylesheet">
     <link href="<?=$this->path?>/assets/css/normalize.css?v=<?=md5_file(__DIR__ . '/../../assets/css/normalize.css')?>" rel="stylesheet" type="text/css">
     <link href="<?=$this->path?>/assets/css/style.css?v=<?=md5_file(__DIR__ . '/../../assets/css/style.css')?>" rel="stylesheet" type="text/css">
 

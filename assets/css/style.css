@@ -1,4 +1,29 @@
 /*
+      ,...                                   ,,
+    .d' ""                 mm              `7MM                          mm
+    dM`                    MM                MM                          MM
+   mMMmm,pW"Wq.`7MMpMMMb.mmMMmm     ,pP"Ybd  MMpMMMb.  .gP"Ya   .gP"Ya mmMMmm
+    MM 6W'   `Wb MM    MM  MM       8I   `"  MM    MM ,M'   Yb ,M'   Yb  MM
+    MM 8M     M8 MM    MM  MM       `YMMMa.  MM    MM 8M"""""" 8M""""""  MM
+    MM YA.   ,A9 MM    MM  MM       L.   I8  MM    MM YM.    , YM.    ,  MM
+  .JMML.`Ybmd9'.JMML  JMML.`Mbmo    M9mmmP'.JMML  JMML.`Mbmmd'  `Mbmmd'  `Mbmo
+*/
+
+/*
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+
+    font-size: 20px;
+    font-family: 'PT Sans Caption', sans-serif;
+    font-weight: 400;
+*/
+
+/*
                                  ,,
                                  db
 
@@ -11,6 +36,8 @@
 
 body {
     font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
 input {
@@ -73,10 +100,11 @@ input[type="submit"] {
 }
 
 .c-form__title {
-    font-weight: bold;
-    font-size: 16px;
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .c-form__block-separator {
-    padding: 90px 20px 0px 20px;
+    padding: 100px 20px 0px 20px;
 }
