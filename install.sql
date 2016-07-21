@@ -116,3 +116,5 @@ INSERT INTO `users_info` SET
   `name` = 'Дмитрий Щербаков',
   `access` = 'admin',
   `created_at` = '2016-07-18 05:56:41';
+
+ALTER TABLE `users_info` ADD FOREIGN KEY (`uid`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
