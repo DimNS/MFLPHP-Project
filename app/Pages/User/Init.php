@@ -30,7 +30,7 @@ class Init extends \MFLPHP\Abstracts\PageController
         $register = new ActionRegister($this->di);
         $result   = $register->run($this->request->param('name'), $this->request->param('email'));
 
-        if ($result['access'] === 'granted') {
+        if ($result['error'] === false) {
             $this->response->redirect(getenv('PATH_SHORT_ROOT'), 200);
         } else {
             $this->service->title   = $this->di->auth->config->site_name;
@@ -54,7 +54,7 @@ class Init extends \MFLPHP\Abstracts\PageController
         $login  = new ActionLogin($this->di);
         $result = $login->run($this->request->param('email'), $this->request->param('password'));
 
-        if ($result['access'] === 'granted') {
+        if ($result['error'] === false) {
             $this->response->redirect(getenv('PATH_SHORT_ROOT'), 200);
         } else {
             $this->service->title   = $this->di->auth->config->site_name;

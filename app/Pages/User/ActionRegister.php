@@ -47,9 +47,9 @@ class ActionRegister
      */
     public function run($user_name, $user_email)
     {
-        $user = [
-            'access'  => 'denied',
-            'message' => '',
+        $result = [
+            'error'   => true,
+            'message' => 'Неизвестная ошибка.',
         ];
 
         // Создадим временный пароль
@@ -79,22 +79,22 @@ class ActionRegister
                     ]);
 
                     // Войдем под этим пользователем
-                    $login = new ActionLogin($this->di);
-                    $user  = $login->run($user_email, $password);
+                    $login  = new ActionLogin($this->di);
+                    $result = $login->run($user_email, $password);
                 } else {
-                    $user['message'] = 'Произошла ошибка при изменении данных. Попробуйте войти ещё раз.';
+                    $result['message'] = 'Произошла ошибка при изменении данных. Попробуйте войти ещё раз.';
                 }
             } else {
                 \ORM::for_table('users')
                     ->where_equal('email', $user_email)
                     ->delete();
 
-                $user['message'] = 'Данные пользователя не найдены. Попробуйте войти ещё раз.';
+                $result['message'] = 'Данные пользователя не найдены. Попробуйте войти ещё раз.';
             }
         } else {
-            $user['message'] = $registerResult['message'];
+            $result['message'] = $registerResult['message'];
         }
 
-        return $user;
+        return $result;
     }
 }

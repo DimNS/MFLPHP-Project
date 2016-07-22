@@ -47,9 +47,9 @@ class ActionLogin
      */
     public function run($user_email, $user_pass)
     {
-        $user = [
-            'access'  => 'denied',
-            'message' => '',
+        $result = [
+            'error'   => true,
+            'message' => 'Неизвестная ошибка.',
         ];
 
         $loginResult = $this->di->auth->login($user_email, $user_pass, false);
@@ -66,20 +66,20 @@ class ActionLogin
 
                     setcookie($this->di->auth->config->cookie_name, $loginResult['hash'], $loginResult['expire'], $this->di->auth->config->cookie_path, $this->di->auth->config->cookie_domain, $this->di->auth->config->cookie_secure, $this->di->auth->config->cookie_http);
 
-                    $user = [
-                        'access'  => 'granted',
+                    return [
+                        'error'   => false,
                         'message' => 'Добро пожаловать!',
                     ];
                 } else {
-                    $user['message'] = 'Произошла ошибка при изменении данных. Попробуйте войти ещё раз.';
+                    $result['message'] = 'Произошла ошибка при изменении данных. Попробуйте войти ещё раз.';
                 }
             } else {
-                $user['message'] = 'Данные пользователя не найдены. Попробуйте войти ещё раз.';
+                $result['message'] = 'Данные пользователя не найдены. Попробуйте войти ещё раз.';
             }
         } else {
-            $user['message'] = $loginResult['message'];
+            $result['message'] = $loginResult['message'];
         }
 
-        return $user;
+        return $result;
     }
 }

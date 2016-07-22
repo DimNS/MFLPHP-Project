@@ -44,9 +44,9 @@ class ActionLost
      */
     public function run($user_email)
     {
-        $user = [
-            'access'  => 'denied',
-            'message' => '',
+        $result = [
+            'error'   => true,
+            'message' => 'Неизвестная ошибка.',
         ];
 
         // Сформируем запрос на смену пароля
@@ -75,22 +75,25 @@ class ActionLost
                         '[[KEY]]'        => $request_info->rkey,
                     ]);
                     if ($send_result) {
-                        $user['message'] = 'Запрос успешно отправлен на электронную почту "' . $user_email . '".';
+                        return [
+                            'error'   => false,
+                            'message' => 'Запрос успешно отправлен на электронную почту "' . $user_email . '".',
+                        ];
                     } else {
-                        $user['message'] = 'Произошла ошибка. Пожалуйста, обратитесь к разработчику.';
+                        $result['message'] = 'Произошла ошибка. Пожалуйста, обратитесь к разработчику.';
                     }
                 } else {
                     $this->di->log->warning('Для запроса на восстановление пароля не найден ключ восстановления: "' . $user_email . '" (#' . $user_info->id . ', type=reset).');
-                    $user['message'] = 'Произошла ошибка. Пожалуйста, обратитесь к разработчику.';
+                    $result['message'] = 'Произошла ошибка. Пожалуйста, обратитесь к разработчику.';
                 }
             } else {
                 $this->di->log->warning('Для запроса на восстановление пароля не найден пользователь: "' . $user_email . '".');
-                $user['message'] = 'Произошла ошибка. Пожалуйста, обратитесь к разработчику.';
+                $result['message'] = 'Произошла ошибка. Пожалуйста, обратитесь к разработчику.';
             }
         } else {
-            $user['message'] = $result['message'];
+            $result['message'] = $result['message'];
         }
 
-        return $user;
+        return $result;
     }
 }
