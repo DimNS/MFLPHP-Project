@@ -20,6 +20,6 @@
     </div>
 
     <script src="<?=$this->path?>/assets/js/jquery-2.1.3.min.js" type="text/javascript"></script>
-    <script src="<?=$this->path?>/assets/js/app<?php print('1' === getenv('PRODUCTION') ? '.min' : ''); ?>.js?v=<?=md5_file(__DIR__ . '/../../assets/js/app.min.js')?>" type="text/javascript"></script>
+    <script src="<?=$this->path?>/assets/js/app<?php print('1' === getenv('PRODUCTION') ? '.min' : ''); ?>.js?v=<?=md5_file(__DIR__ . '/../../assets/js/app' . ('1' === getenv('PRODUCTION') ? '.min' : '') . '.js')?>" type="text/javascript"></script>
 </body>
 </html>
