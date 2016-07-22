@@ -29,6 +29,12 @@ var app = (function() {
         });
     };
 
+    // Скрываем форму входа и показываем форму напоминания пароля
+    $('#js-lost-show').on('click', function() {
+        $('#js-user-login').addClass('hidden');
+        $('#js-user-lost').removeClass('hidden');
+    });
+
     return {
         init: init,
     };

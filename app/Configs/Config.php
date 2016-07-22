@@ -79,7 +79,7 @@ class Config
                     <td>Добро пожаловать!</td>
                 </tr>
                 <tr>
-                    <td>Вы <strong>успешно зарегистрировались</strong> на сайте [[SITE_NAME]].</td>
+                    <td>Вы <strong>успешно зарегистрировались</strong> на сайте "[[SITE_NAME]]".</td>
                 </tr>
                 <tr>
                     <td style="text-align:center;">
@@ -101,6 +101,25 @@ class Config
                     <td align="center">
                         <a href="[[SITE_URL]]" style="background:#3baae3;color:#ffffff;font-size:24px;padding:10px 40px;text-decoration:none;">Начать работу</a>
                     </td>
+                </tr>
+            ',
+            'user_lost' => '
+                <tr>
+                    <td>Мы получили запрос на <strong>восстановление пароля</strong> к вашему аккаунту <strong>[[USER_EMAIL]]</strong> на сайте "[[SITE_NAME]]".</td>
+                </tr>
+                <tr>
+                    <td>В целях безопасности мы не храним оригинальный пароль, а только можем сменить его на новый.</td>
+                </tr>
+                <tr>
+                    <td>Пожалуйста, перейдите по ссылке, чтобы установить новый пароль:</td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <a href="[[SITE_URL]]/user/reset/[[KEY]]" style="background:#3baae3;color:#ffffff;font-size:24px;padding:10px 40px;text-decoration:none;">Получить новый пароль</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Если вы не запрашивали сброс пароля на сайте "[[SITE_NAME]]", значит это сообщение вы получили по ошибке. Пожалуйста, проигнорируйте его.</td>
                 </tr>
             ',
         ];

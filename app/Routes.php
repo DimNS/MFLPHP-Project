@@ -50,6 +50,21 @@ $klein->with('/user', function () use ($klein) {
         $page = new Pages\User\Init($request, $response, $service, $di);
         $page->logout();
     });
+
+    $klein->respond('POST', '/lost', function ($request, $response, $service, $di) {
+        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page->lost();
+    });
+
+    $klein->respond('GET', '/reset/[:key]', function ($request, $response, $service, $di) {
+        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page->reset();
+    });
+
+    $klein->respond('POST', '/reset', function ($request, $response, $service, $di) {
+        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page->reset();
+    });
 });
 
 //
