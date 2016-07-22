@@ -36,9 +36,19 @@ $klein->respond('GET', '/', function ($request, $response, $service, $di) {
 //      MV
 //     AW
 $klein->with('/user', function () use ($klein) {
-    $klein->respond('POST', '/register', function ($request, $response, $service, $di) {
+    $klein->respond('GET', '', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
-        $page->register();
+        $page->getProfile();
+    });
+
+    $klein->respond('POST', '/change-password', function ($request, $response, $service, $di) {
+        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page->changePassword();
+    });
+
+    $klein->respond('POST', '/change-email', function ($request, $response, $service, $di) {
+        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page->changeEmail();
     });
 
     $klein->respond('POST', '/login', function ($request, $response, $service, $di) {
@@ -54,6 +64,11 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('POST', '/lost', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
         $page->lost();
+    });
+
+    $klein->respond('POST', '/register', function ($request, $response, $service, $di) {
+        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page->register();
     });
 
     $klein->respond('GET', '/reset/[:key]', function ($request, $response, $service, $di) {

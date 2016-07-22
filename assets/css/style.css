@@ -1,15 +1,13 @@
 /*
-      ,...                                   ,,
-    .d' ""                 mm              `7MM                          mm
-    dM`                    MM                MM                          MM
-   mMMmm,pW"Wq.`7MMpMMMb.mmMMmm     ,pP"Ybd  MMpMMMb.  .gP"Ya   .gP"Ya mmMMmm
-    MM 6W'   `Wb MM    MM  MM       8I   `"  MM    MM ,M'   Yb ,M'   Yb  MM
-    MM 8M     M8 MM    MM  MM       `YMMMa.  MM    MM 8M"""""" 8M""""""  MM
-    MM YA.   ,A9 MM    MM  MM       L.   I8  MM    MM YM.    , YM.    ,  MM
-  .JMML.`Ybmd9'.JMML  JMML.`Mbmo    M9mmmP'.JMML  JMML.`Mbmmd'  `Mbmmd'  `Mbmo
-*/
+        ,...                                   ,,
+      .d' ""                 mm              `7MM                          mm
+      dM`                    MM                MM                          MM
+     mMMmm,pW"Wq.`7MMpMMMb.mmMMmm     ,pP"Ybd  MMpMMMb.  .gP"Ya   .gP"Ya mmMMmm
+      MM 6W'   `Wb MM    MM  MM       8I   `"  MM    MM ,M'   Yb ,M'   Yb  MM
+      MM 8M     M8 MM    MM  MM       `YMMMa.  MM    MM 8M"""""" 8M""""""  MM
+      MM YA.   ,A9 MM    MM  MM       L.   I8  MM    MM YM.    , YM.    ,  MM
+    .JMML.`Ybmd9'.JMML  JMML.`Mbmo    M9mmmP'.JMML  JMML.`Mbmmd'  `Mbmmd'  `Mbmo
 
-/*
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -76,14 +74,62 @@ input[type="submit"] {
     display: none !important;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #cecfd5;
+    padding: 10px 15px;
+}
+
 /*
-                               mm                      mm
-                               MM                      MM
-   ,p6"bo   ,pW"Wq.`7MMpMMMb.mmMMmm .gP"Ya `7MMpMMMb.mmMMmm
-  6M'  OO  6W'   `Wb MM    MM  MM  ,M'   Yb  MM    MM  MM
-  8M       8M     M8 MM    MM  MM  8M""""""  MM    MM  MM
-  YM.    , YA.   ,A9 MM    MM  MM  YM.    ,  MM    MM  MM
-   YMbmd'   `Ybmd9'.JMML  JMML.`Mbmo`Mbmmd'.JMML  JMML.`Mbmo
+             ,,                                                 ,,
+             db                                                 db   mm
+                                                                     MM
+     ,6"Yb.`7MM  ,6"Yb.  `7M'   `MF'`7M'    ,A    `MF',6"Yb.  `7MM mmMMmm .gP"Ya `7Mb,od8
+    8)   MM  MM 8)   MM    `VA ,V'    VA   ,VAA   ,V 8)   MM    MM   MM  ,M'   Yb  MM' "'
+     ,pm9MM  MM  ,pm9MM      XMX       VA ,V  VA ,V   ,pm9MM    MM   MM  8M""""""  MM
+    8M   MM  MM 8M   MM    ,V' VA.      VVV    VVV   8M   MM    MM   MM  YM.    ,  MM
+    `Moo9^Yo.MM `Moo9^Yo..AM.   .MA.     W      W    `Moo9^Yo..JMML. `Mbmo`Mbmmd'.JMML.
+          QO MP
+          `bmP
+*/
+
+.ajaxwaiter-overlay {
+    position: fixed;
+    z-index: 5000;
+    background: #000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.40;
+    filter: alpha(opacity=40);
+}
+
+.ajaxwaiter-preloader {
+    position: fixed;
+    z-index: 5100;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    width: 104px;
+    height: 64px;
+    margin-top: -32px;
+    margin-left: -52px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+/*
+                                 mm                      mm
+                                 MM                      MM
+     ,p6"bo   ,pW"Wq.`7MMpMMMb.mmMMmm .gP"Ya `7MMpMMMb.mmMMmm
+    6M'  OO  6W'   `Wb MM    MM  MM  ,M'   Yb  MM    MM  MM
+    8M       8M     M8 MM    MM  MM  8M""""""  MM    MM  MM
+    YM.    , YA.   ,A9 MM    MM  MM  YM.    ,  MM    MM  MM
+     YMbmd'   `Ybmd9'.JMML  JMML.`Mbmo`Mbmmd'.JMML  JMML.`Mbmo
 */
 
 .content {padding: 20px;}

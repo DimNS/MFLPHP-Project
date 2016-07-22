@@ -19,6 +19,14 @@
         <?=$this->yieldView()?>
     </div>
 
+    <div id="js-ajaxwaiter-overlay" class="ajaxwaiter-overlay hidden"></div>
+    <div id="js-ajaxwaiter-preloader" class="ajaxwaiter-preloader hidden">
+        <img src="<?=$this->path?>/assets/img/preloader.gif" title="Идёт загрузка...">
+    </div>
+
+    <script type="text/javascript">
+        var pathRoot = '<?=$this->path?>';
+    </script>
     <script src="<?=$this->path?>/assets/js/jquery-2.1.3.min.js" type="text/javascript"></script>
     <script src="<?=$this->path?>/assets/js/app<?php print('1' === getenv('PRODUCTION') ? '.min' : ''); ?>.js?v=<?=md5_file(__DIR__ . '/../../assets/js/app' . ('1' === getenv('PRODUCTION') ? '.min' : '') . '.js')?>" type="text/javascript"></script>
 </body>
