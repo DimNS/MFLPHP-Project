@@ -8,6 +8,9 @@
 
 namespace MyApp;
 
+use MFLPHP\Helpers\InvalidToken;
+use MFLPHP\Pages\User;
+
 //
 //           AW
 //          ,M'
@@ -20,7 +23,7 @@ namespace MyApp;
 //      MV
 //     AW
 $klein->respond('GET', '/', function ($request, $response, $service, $di) {
-    $page = new Pages\Main\Init($request, $response, $service, $di);
+    $page = new \MFLPHP\Pages\Main\Init($request, $response, $service, $di);
     $page->start();
 });
 
@@ -37,53 +40,53 @@ $klein->respond('GET', '/', function ($request, $response, $service, $di) {
 //     AW
 $klein->with('/user', function () use ($klein) {
     $klein->respond('GET', '', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
         $page->getProfile();
     });
 
     $klein->respond('POST', '/change-password', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
 
         if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
             $page->changePassword();
         } else {
-            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response);
         }
     });
 
     $klein->respond('POST', '/change-email', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
 
         if ($di->csrf->validateToken($request->servers()->get('HTTP_X_CSRFTOKEN', ''))) {
             $page->changeEmail();
         } else {
-            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response);
         }
     });
 
     $klein->respond('POST', '/login', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
 
         if ($di->csrf->validateToken($request->param('_token'))) {
             $page->login();
         } else {
-            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response);
         }
     });
 
     $klein->respond('GET', '/logout', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
         $page->logout();
     });
 
     $klein->respond(['GET', 'POST'], '/lost', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
 
         if ($request->method('post') === true) {
             if ($di->csrf->validateToken($request->param('_token'))) {
                 $page->lost();
             } else {
-                \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+                InvalidToken::getResponse($request, $response);
             }
         } else {
             $page->lost();
@@ -91,13 +94,13 @@ $klein->with('/user', function () use ($klein) {
     });
 
     $klein->respond(['GET', 'POST'], '/register', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
 
         if ($request->method('post') === true) {
             if ($di->csrf->validateToken($request->param('_token'))) {
                 $page->register();
             } else {
-                \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+                InvalidToken::getResponse($request, $response);
             }
         } else {
             $page->register();
@@ -105,17 +108,17 @@ $klein->with('/user', function () use ($klein) {
     });
 
     $klein->respond('GET', '/reset/[:key]', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
         $page->reset();
     });
 
     $klein->respond('POST', '/reset', function ($request, $response, $service, $di) {
-        $page = new Pages\User\Init($request, $response, $service, $di);
+        $page = new User\Init($request, $response, $service, $di);
 
         if ($di->csrf->validateToken($request->param('_token'))) {
             $page->reset();
         } else {
-            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response);
         }
     });
 });
