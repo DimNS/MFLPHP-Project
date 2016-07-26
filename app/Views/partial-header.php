@@ -25,7 +25,7 @@
             <div class="sidebar-container">
                 <div class="sidebar-header">
                     <div class="brand">
-                        <a href="<?=$this->path?>/"><img src="<?=$this->path?>/assets/img/logo.png"></a>
+                        <a href="<?=$this->path?>/"><img src="<?=$this->path?>/assets/img/logo-white.png"></a>
                     </div>
                 </div>
                 <nav class="menu">

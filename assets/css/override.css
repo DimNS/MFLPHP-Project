@@ -25,18 +25,12 @@
     font-weight: 400;
 */
 
-/*
-                                 ,,
-                                 db
-
-    `7MMpMMMb.pMMMb.   ,6"Yb.  `7MM  `7MMpMMMb.
-      MM    MM    MM  8)   MM    MM    MM    MM
-      MM    MM    MM   ,pm9MM    MM    MM    MM
-      MM    MM    MM  8M   MM    MM    MM    MM
-    .JMML  JMML  JMML.`Moo9^Yo..JMML..JMML  JMML.
-*/
-
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+}
+
+.sidebar-header .brand {
+    padding-left: 0;
+    text-align: center;
 }
