@@ -39,17 +39,25 @@ class Init extends \MFLPHP\Abstracts\PageController
      */
     public function register()
     {
-        $register = new ActionRegister($this->di);
-        $result   = $register->run($this->request->param('name'), $this->request->param('email'));
+        if ($this->request->method('post') === true) {
+            $register = new ActionRegister($this->di);
+            $result   = $register->run($this->request->param('name'), $this->request->param('email'));
 
-        if ($result['error'] === false) {
-            $this->response->redirect(getenv('PATH_SHORT_ROOT'), 200);
+            if ($result['error'] === false) {
+                $this->response->redirect(getenv('PATH_SHORT_ROOT'), 200);
+            } else {
+                $this->service->title   = $this->di->auth->config->site_name;
+                $this->service->uri     = $this->request->uri();
+                $this->service->message = $result['message'];
+
+                $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'register.php');
+            }
         } else {
             $this->service->title   = $this->di->auth->config->site_name;
             $this->service->uri     = $this->request->uri();
-            $this->service->message = $result['message'];
+            $this->service->message = 'Регистрация нового аккаунта';
 
-            $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'auth.php');
+            $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'register.php');
         }
     }
 
@@ -139,14 +147,22 @@ class Init extends \MFLPHP\Abstracts\PageController
      */
     public function lost()
     {
-        $lost   = new ActionLost($this->di);
-        $result = $lost->run($this->request->param('email'));
+        if ($this->request->method('post') === true) {
+            $lost   = new ActionLost($this->di);
+            $result = $lost->run($this->request->param('email'));
 
-        $this->service->title   = $this->di->auth->config->site_name;
-        $this->service->uri     = $this->request->uri();
-        $this->service->message = $result['message'];
+            $this->service->title   = $this->di->auth->config->site_name;
+            $this->service->uri     = $this->request->uri();
+            $this->service->message = $result['message'];
 
-        $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'auth.php');
+            $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'lost.php');
+        } else {
+            $this->service->title   = $this->di->auth->config->site_name;
+            $this->service->uri     = $this->request->uri();
+            $this->service->message = 'Сброс пароля';
+
+            $this->service->render(__DIR__ . '/../../' . $this->view_prefix . 'lost.php');
+        }
     }
 
     //
@@ -188,18 +204,20 @@ class Init extends \MFLPHP\Abstracts\PageController
                 $this->service->message = $result['message'];
                 $template = 'auth';
             } else {
+                $this->service->message = 'Восстановление пароля';
                 $template = 'reset';
             }
 
             $this->service->render(__DIR__ . '/../../' . $this->view_prefix . $template . '.php');
         } else {
             if ($this->request->method('post') === true) {
+                $this->service->message = 'Восстановление пароля';
                 $template = 'reset';
             } else {
+                $this->service->message = $result['message'];
                 $template = 'auth';
             }
 
-            $this->service->message = $result['message'];
             $this->service->render(__DIR__ . '/../../' . $this->view_prefix . $template . '.php');
         }
     }

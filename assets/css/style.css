@@ -22,65 +22,17 @@
 */
 
 /*
-                                 ,,
-                                 db
-
-    `7MMpMMMb.pMMMb.   ,6"Yb.  `7MM  `7MMpMMMb.
-      MM    MM    MM  8)   MM    MM    MM    MM
-      MM    MM    MM   ,pm9MM    MM    MM    MM
-      MM    MM    MM  8M   MM    MM    MM    MM
-    .JMML  JMML  JMML.`Moo9^Yo..JMML..JMML  JMML.
+    `7MMM.     ,MMF'      db      `7MMF'`7MN.   `7MF'
+      MMMb    dPMM       ;MM:       MM    MMN.    M
+      M YM   ,M MM      ,V^MM.      MM    M YMb   M
+      M  Mb  M' MM     ,M  `MM      MM    M  `MN. M
+      M  YM.P'  MM     AbmmmqMA     MM    M   `MM.M
+      M  `YM'   MM    A'     VML    MM    M     YMM
+    .JML. `'  .JMML..AMA.   .AMMA..JMML..JML.    YM
 */
 
-body {
-    font-size: 16px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-}
-
-input {
-    box-sizing: border-box;
-}
-
-input[type="text"],
-input[type="password"] {
-    padding: 5px 10px;
-}
-
-input[type="submit"] {
-    padding: 5px 20px;
-}
-
-.clearfix() {
-    &:before,
-    &:after {
-        content: " ";
-        display: table;
-    }
-    &:after {
-        clear: both;
-    }
-}
-
-.pull-left {
-    float: left !important;
-}
-
-.pull-right {
-    float: right !important;
-}
-
-.hidden {
-    display: none !important;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #cecfd5;
-    padding: 10px 15px;
+.hidden-block {
+    display: none;
 }
 
 /*
@@ -99,6 +51,7 @@ th, td {
 .ajaxwaiter-overlay {
     position: fixed;
     z-index: 5000;
+    display: none;
     background: #000;
     top: 0;
     left: 0;
@@ -111,6 +64,7 @@ th, td {
 .ajaxwaiter-preloader {
     position: fixed;
     z-index: 5100;
+    display: none;
     background: #fff;
     top: 50%;
     left: 50%;
@@ -120,41 +74,4 @@ th, td {
     margin-left: -52px;
     text-align: center;
     border-radius: 20px;
-}
-
-/*
-                                 mm                      mm
-                                 MM                      MM
-     ,p6"bo   ,pW"Wq.`7MMpMMMb.mmMMmm .gP"Ya `7MMpMMMb.mmMMmm
-    6M'  OO  6W'   `Wb MM    MM  MM  ,M'   Yb  MM    MM  MM
-    8M       8M     M8 MM    MM  MM  8M""""""  MM    MM  MM
-    YM.    , YA.   ,A9 MM    MM  MM  YM.    ,  MM    MM  MM
-     YMbmd'   `Ybmd9'.JMML  JMML.`Mbmo`Mbmmd'.JMML  JMML.`Mbmo
-*/
-
-.content {padding: 20px;}
-
-/*
-        ,...
-      .d' ""
-      dM`
-     mMMmm,pW"Wq.`7Mb,od8 `7MMpMMMb.pMMMb.
-      MM 6W'   `Wb MM' "'   MM    MM    MM
-      MM 8M     M8 MM       MM    MM    MM
-      MM YA.   ,A9 MM       MM    MM    MM
-    .JMML.`Ybmd9'.JMML.   .JMML  JMML  JMML.
-*/
-
-.c-form input {
-    width: 250px;
-}
-
-.c-form__title {
-    font-family: 'PT Sans Caption', sans-serif;
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.c-form__block-separator {
-    padding: 100px 20px 0px 20px;
 }

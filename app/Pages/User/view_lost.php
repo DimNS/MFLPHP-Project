@@ -9,15 +9,14 @@
 
             <div class="auth-content">
                 <p><?=$this->message?></p>
-                <form id="reset-form" action="<?=$this->path?>/user/reset" method="post" novalidate="">
+                <form id="reset-form" action="<?=$this->path?>/user/lost" method="post" novalidate="">
                     <div class="form-group">
-                        <label>Укажите новый пароль</label>
-                        <input type="password" class="form-control underlined" name="password" placeholder="Пароль" required>
+                        <label>Укажите адрес электронной почты на которую зарегистрирован пользователь</label>
+                        <input type="email" class="form-control underlined" name="email" placeholder="Адрес электронной почты" required>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?=$this->csrf_token?>">
-                        <input type="hidden" name="key" value="<?=$this->key?>">
-                        <button type="submit" class="btn btn-block btn-primary">Сохранить новый пароль</button>
+                        <button type="submit" class="btn btn-block btn-primary">Сбросить пароль</button>
                     </div>
                     <div class="form-group clearfix">
                         <a class="pull-left" href="<?=$this->path?>/">Войти</a>

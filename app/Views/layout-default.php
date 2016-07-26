@@ -9,25 +9,32 @@
     <meta name="_token" content="<?=$this->csrf_token?>">
 
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400|Roboto:400,700&subset=cyrillic-ext" rel="stylesheet">
-    <link href="<?=$this->path?>/assets/css/normalize.css?v=<?=md5_file(__DIR__ . '/../../assets/css/normalize.css')?>" rel="stylesheet" type="text/css">
+
+    <!-- modular-admin-html -->
+    <link href="<?=$this->path?>/assets/modular-admin-v101/css/vendor.css" rel="stylesheet" type="text/css">
+    <link href="<?=$this->path?>/assets/modular-admin-v101/css/app-blue.css" rel="stylesheet" type="text/css">
+
     <link href="<?=$this->path?>/assets/css/style.css?v=<?=md5_file(__DIR__ . '/../../assets/css/style.css')?>" rel="stylesheet" type="text/css">
+    <link href="<?=$this->path?>/assets/css/override.css?v=<?=md5_file(__DIR__ . '/../../assets/css/override.css')?>" rel="stylesheet" type="text/css">
 
     <title><?=$this->title?></title>
 </head>
 <body>
-    <div class="content">
-        <?=$this->yieldView()?>
-    </div>
+    <?=$this->yieldView()?>
 
-    <div id="js-ajaxwaiter-overlay" class="ajaxwaiter-overlay hidden"></div>
-    <div id="js-ajaxwaiter-preloader" class="ajaxwaiter-preloader hidden">
+    <div id="js-ajaxwaiter-overlay" class="ajaxwaiter-overlay"></div>
+    <div id="js-ajaxwaiter-preloader" class="ajaxwaiter-preloader">
         <img src="<?=$this->path?>/assets/img/preloader.gif" title="Идёт загрузка...">
     </div>
 
     <script type="text/javascript">
         var pathRoot = '<?=$this->path?>';
     </script>
-    <script src="<?=$this->path?>/assets/js/jquery-2.1.3.min.js" type="text/javascript"></script>
+
+    <!-- modular-admin-html -->
+    <script src="<?=$this->path?>/assets/modular-admin-v101/js/vendor.js" type="text/javascript"></script>
+    <script src="<?=$this->path?>/assets/modular-admin-v101/js/app.js" type="text/javascript"></script>
+
     <script src="<?=$this->path?>/assets/js/app<?php print('1' === getenv('PRODUCTION') ? '.min' : ''); ?>.js?v=<?=md5_file(__DIR__ . '/../../assets/js/app' . ('1' === getenv('PRODUCTION') ? '.min' : '') . '.js')?>" type="text/javascript"></script>
 </body>
 </html>

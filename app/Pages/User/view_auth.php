@@ -1,53 +1,35 @@
-<p><?=$this->message?></p>
+<div class="auth">
+    <div class="auth-container">
+        <div class="card">
+            <header class="auth-header">
+                <h1 class="auth-title">
+                    <img src="<?=$this->path?>/assets/img/logo.png">
+                </h1>
+            </header>
 
-<div class="clearfix">
-    <div class="pull-left">
-        <div id="js-user-login">
-            <form method="post" action="<?=$this->path?>/user/login" class="c-form">
-                <p class="c-form__title">Вход</p>
-                <p><input type="text" name="email" placeholder="Адрес электронной почты"></p>
-                <p><input type="password" name="password" placeholder="Пароль"></p>
-                <p>
-                    <input type="hidden" name="_token" value="<?=$this->csrf_token?>">
-                    <input type="submit" value="Войти">
-                </p>
-                <p><a href="javascript:;" id="js-lost-show">Я не помню пароль</a></p>
-            </form>
+            <div class="auth-content">
+                <form id="login-form" action="<?=$this->path?>/user/login" method="post" novalidate="">
+                    <p><?=$this->message?></p>
+                    <div class="form-group">
+                        <label>Адрес электронной почты</label>
+                        <input type="email" class="form-control underlined" name="email" placeholder="Ваш адрес электронной почты" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <a href="<?=$this->path?>/user/lost" class="pull-right">Я не помню пароль</a>
+                        <input type="password" class="form-control underlined" name="password" placeholder="Ваш пароль" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="_token" value="<?=$this->csrf_token?>">
+                        <button type="submit" class="btn btn-block btn-primary">Войти</button>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-muted text-xs-center">
+                            У вас нет аккаунта? <a href="<?=$this->path?>/user/register">Зарегистрироваться!</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div id="js-user-lost" class="hidden">
-            <form method="post" action="<?=$this->path?>/user/lost" class="c-form">
-                <p class="c-form__title">Я не помню пароль</p>
-                <p>
-                    Укажите адрес электронной почты<br>
-                    на которую зарегистрирован<br>
-                    пользователь.
-                </p>
-                <p><input type="text" name="email" placeholder="Адрес электронной почты"></p>
-                <p>
-                    <input type="hidden" name="_token" value="<?=$this->csrf_token?>">
-                    <input type="submit" value="Отправить запрос">
-                </p>
-            </form>
-        </div>
-    </div>
-    <div class="pull-left">
-        <div class="c-form__block-separator">
-            <p class="c-form__title">ИЛИ</p>
-        </div>
-    </div>
-    <div class="pull-left">
-        <form method="post" action="<?=$this->path?>/user/register" class="c-form">
-            <p class="c-form__title">Регистрация</p>
-            <p><input type="text" name="name" placeholder="Ваше имя"></p>
-            <p><input type="text" name="email" placeholder="Адрес электронной почты"></p>
-            <p>
-                <input type="hidden" name="_token" value="<?=$this->csrf_token?>">
-                <input type="submit" value="Зарегистрироваться">
-            </p>
-            <p>
-                Пароль будет выслан на почту<br>
-                сразу после регистрации.
-            </p>
-        </form>
     </div>
 </div>

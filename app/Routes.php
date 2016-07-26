@@ -76,23 +76,31 @@ $klein->with('/user', function () use ($klein) {
         $page->logout();
     });
 
-    $klein->respond('POST', '/lost', function ($request, $response, $service, $di) {
+    $klein->respond(['GET', 'POST'], '/lost', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
 
-        if ($di->csrf->validateToken($request->param('_token'))) {
-            $page->lost();
+        if ($request->method('post') === true) {
+            if ($di->csrf->validateToken($request->param('_token'))) {
+                $page->lost();
+            } else {
+                \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            }
         } else {
-            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            $page->lost();
         }
     });
 
-    $klein->respond('POST', '/register', function ($request, $response, $service, $di) {
+    $klein->respond(['GET', 'POST'], '/register', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
 
-        if ($di->csrf->validateToken($request->param('_token'))) {
-            $page->register();
+        if ($request->method('post') === true) {
+            if ($di->csrf->validateToken($request->param('_token'))) {
+                $page->register();
+            } else {
+                \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            }
         } else {
-            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+            $page->register();
         }
     });
 
@@ -129,12 +137,12 @@ $klein->onHttpError(function ($code, $router) use ($di) {
     switch ($code) {
         case 404:
             $template_file = '404';
-            $router->service()->title = 'Страница не найдена | ' . $di->auth->config->site_name;
+            $router->service()->title = 'Страница не найдена';
             break;
 
         default:
             $template_file = 'error';
-            $router->service()->title = 'Произошла ошибка | ' . $di->auth->config->site_name;
+            $router->service()->title = 'Произошла ошибка';
             break;
     }
 

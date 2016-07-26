@@ -62,17 +62,11 @@ var app = (function() {
      */
     function ajaxWaiter(action) {
         if (action === 'show') {
-            $('#js-ajaxwaiter-overlay, #js-ajaxwaiter-preloader').removeClass('hidden');
+            $('#js-ajaxwaiter-overlay, #js-ajaxwaiter-preloader').show();
         } else if (action === 'hide') {
-            $('#js-ajaxwaiter-overlay, #js-ajaxwaiter-preloader').addClass('hidden');
+            $('#js-ajaxwaiter-overlay, #js-ajaxwaiter-preloader').hide();
         }
     }
-
-    // Скрываем форму входа и показываем форму напоминания пароля
-    $('#js-lost-show').on('click', function() {
-        $('#js-user-login').addClass('hidden');
-        $('#js-user-lost').removeClass('hidden');
-    });
 
     // Запрос на изменение пароля
     $('#js-profile-change-password').on('click', function() {
