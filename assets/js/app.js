@@ -30,6 +30,27 @@ var app = (function() {
     };
 
     /**
+     * Показать ошибку выполнения AJAX
+     *
+     * @param string status Код ошибки
+     * @param string text   Текст ошибки сервера
+     *
+     * @return null
+     *
+     * @version ===
+     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     */
+    function ajaxError(status, text) {
+        switch (status) {
+            case 'timeout'    : alert('Время ожидания истекло'); break;
+            case 'parsererror': alert('Ошибка парсера'); break;
+            case 'abort'      : alert('Запрос был отменён'); break;
+            case 'error'      : alert('Произошла ошибка сервера: ' + text); break;
+            default           : alert('Неизвестная ошибка'); break;
+        }
+    }
+
+    /**
      * Показать \ Скрыть окно ожидания ответа AJAX
      *
      * @param string action Действие (show|hide)

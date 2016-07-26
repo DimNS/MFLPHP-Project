@@ -43,17 +43,32 @@ $klein->with('/user', function () use ($klein) {
 
     $klein->respond('POST', '/change-password', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
-        $page->changePassword();
+
+        if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
+            $page->changePassword();
+        } else {
+            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+        }
     });
 
     $klein->respond('POST', '/change-email', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
-        $page->changeEmail();
+
+        if ($di->csrf->validateToken($request->servers()->get('HTTP_X_CSRFTOKEN', ''))) {
+            $page->changeEmail();
+        } else {
+            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+        }
     });
 
     $klein->respond('POST', '/login', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
-        $page->login();
+
+        if ($di->csrf->validateToken($request->param('_token'))) {
+            $page->login();
+        } else {
+            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+        }
     });
 
     $klein->respond('GET', '/logout', function ($request, $response, $service, $di) {
@@ -63,12 +78,22 @@ $klein->with('/user', function () use ($klein) {
 
     $klein->respond('POST', '/lost', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
-        $page->lost();
+
+        if ($di->csrf->validateToken($request->param('_token'))) {
+            $page->lost();
+        } else {
+            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+        }
     });
 
     $klein->respond('POST', '/register', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
-        $page->register();
+
+        if ($di->csrf->validateToken($request->param('_token'))) {
+            $page->register();
+        } else {
+            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+        }
     });
 
     $klein->respond('GET', '/reset/[:key]', function ($request, $response, $service, $di) {
@@ -78,7 +103,12 @@ $klein->with('/user', function () use ($klein) {
 
     $klein->respond('POST', '/reset', function ($request, $response, $service, $di) {
         $page = new Pages\User\Init($request, $response, $service, $di);
-        $page->reset();
+
+        if ($di->csrf->validateToken($request->param('_token'))) {
+            $page->reset();
+        } else {
+            \MFLPHP\Helpers\InvalidToken::getResponse($request, $response);
+        }
     });
 });
 
@@ -99,12 +129,12 @@ $klein->onHttpError(function ($code, $router) use ($di) {
     switch ($code) {
         case 404:
             $template_file = '404';
-            $router->service()->title = 'Страница не найдена - ' . $di->auth->config->site_name;
+            $router->service()->title = 'Страница не найдена | ' . $di->auth->config->site_name;
             break;
 
         default:
             $template_file = 'error';
-            $router->service()->title = 'Произошла ошибка - ' . $di->auth->config->site_name;
+            $router->service()->title = 'Произошла ошибка | ' . $di->auth->config->site_name;
             break;
     }
 
