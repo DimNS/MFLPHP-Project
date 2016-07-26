@@ -57,7 +57,7 @@ $klein->with('/user', function () use ($klein) {
     $klein->respond('POST', '/change-email', function ($request, $response, $service, $di) {
         $page = new User\Init($request, $response, $service, $di);
 
-        if ($di->csrf->validateToken($request->servers()->get('HTTP_X_CSRFTOKEN', ''))) {
+        if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
             $page->changeEmail();
         } else {
             InvalidToken::getResponse($request, $response);
