@@ -8,7 +8,7 @@
             </header>
 
             <div class="auth-content">
-                <p><?=$this->message?></p>
+                <p class="text-<?=$this->message_code?>"><?=$this->message_text?></p>
                 <form id="reset-form" action="<?=$this->path?>/user/reset" method="post" novalidate="">
                     <div class="form-group">
                         <label>Укажите новый пароль</label>

@@ -9,7 +9,7 @@
 
             <div class="auth-content">
                 <form id="login-form" action="<?=$this->path?>/user/login" method="post" novalidate="">
-                    <p><?=$this->message?></p>
+                    <p class="text-<?=$this->message_code?>"><?=$this->message_text?></p>
                     <div class="form-group">
                         <label>Адрес электронной почты</label>
                         <input type="email" class="form-control underlined" name="email" placeholder="Ваш адрес электронной почты" required>

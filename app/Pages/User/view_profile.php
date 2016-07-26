@@ -11,8 +11,6 @@ $date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->creat
     <h3 class="title">Профиль</h3>
 </div>
 
-<p><?=$this->message?></p>
-
 <div class="row">
     <div class="col-xs-4">
         <div class="card card-default">
