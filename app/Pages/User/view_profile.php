@@ -10,7 +10,7 @@ $date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->creat
 </div>
 
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-4 col-md-6">
         <div class="card card-default">
             <div class="card-header">
                 <div class="header-block">
@@ -48,7 +48,7 @@ $date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->creat
 </div>
 
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-4 col-md-6">
         <form id="js-profile-form-change-password">
             <div class="card card-default">
                 <div class="card-header">
@@ -67,7 +67,7 @@ $date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->creat
         </form>
     </div>
 
-    <div class="col-xs-4">
+    <div class="col-xs-4 col-md-6">
         <form id="js-profile-form-change-email">
             <div class="card card-default">
                 <div class="card-header">
