@@ -1,5 +1,3 @@
-<?=$this->partial($this->partial_header)?>
-
 <?php
 $carbon = new \Carbon\Carbon();
 $carbon->setLocale('ru');
@@ -88,5 +86,3 @@ $date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->creat
         </form>
     </div>
 </div>
-
-<?=$this->partial($this->partial_footer)?>

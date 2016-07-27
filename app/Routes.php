@@ -135,7 +135,8 @@ $klein->with('/user', function () use ($klein) {
 //                                                      MM
 //                                                    .JMML.
 $klein->onHttpError(function ($code, $router) use ($di) {
-    $router->service()->uri  = $router->request()->uri();
+    $router->service()->uri           = $router->request()->uri();
+    $router->service()->external_page = true;
 
     switch ($code) {
         case 404:
