@@ -1,7 +1,7 @@
 /**
  * Основной файл приложения
  *
- * @version ===
+ * @version 27.07.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -11,7 +11,7 @@ var app = (function() {
      *
      * @return null
      *
-     * @version ===
+     * @version 27.07.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var init = function() {
@@ -37,7 +37,7 @@ var app = (function() {
      *
      * @return null
      *
-     * @version ===
+     * @version 27.07.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     function ajaxError(status, text) {
@@ -57,7 +57,7 @@ var app = (function() {
      *
      * @return null
      *
-     * @version ===
+     * @version 27.07.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     function ajaxWaiter(action) {
