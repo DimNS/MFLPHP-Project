@@ -67,7 +67,7 @@
 
                 <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-                <article class="content dashboard-page">
+                <article class="content">
                     <?=$this->yieldView()?>
                 </article>
 
