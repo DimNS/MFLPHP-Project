@@ -9,14 +9,14 @@
 
             <div class="auth-content">
                 <p class="text-<?=$this->message_code?>"><?=$this->message_text?></p>
-                <form id="signup-form" action="<?=$this->path?>/user/register" method="post" novalidate="">
+                <form id="signup-form" action="<?=$this->path?>/user/register" method="post">
                     <div class="form-group">
                         <label>Ваше имя</label>
-                        <input type="text" class="form-control underlined" name="name" placeholder="Введите ваше имя" required="">
+                        <input type="text" class="form-control underlined" name="name" placeholder="Введите ваше имя" data-msg-required="Введите ваше имя" required>
                     </div>
                     <div class="form-group">
                         <label>Адрес электронной почты</label>
-                        <input type="email" class="form-control underlined" name="email" placeholder="Введите адрес электронной почты" required="">
+                        <input type="email" class="form-control underlined" name="email" placeholder="Введите адрес электронной почты" data-rule-email="true" data-msg-required="Введите адрес электронной почты" data-msg-email="Введите корректный адрес электронной почты" required>
                     </div>
                     <div class="form-group">
                         <p>
@@ -24,10 +24,9 @@
                         </p>
                     </div>
                     <div class="form-group">
-                        <label>
-                            <input class="checkbox" name="agree" type="checkbox" required="">
-                            <span>Я принимаю все условия публичной офёрты и соглашаюсь с политикой конфиденциальности.</span>
-                        </label>
+                        <p>
+                            <strong>Регистрируясь, вы принимаете все условия <a href="#">публичной офёрты</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a>.</strong>
+                        </p>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?=$this->csrf_token?>">

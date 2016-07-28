@@ -69,95 +69,27 @@ function animate(options) {
 $(function() {
     if (!$('#login-form').length) {
         return false;
+    } else {
+        $('#login-form').validate(config.validations);
     }
-
-    var loginValidationSettings = {
-        rules: {
-            email: {
-                required: true,
-                email   : true,
-            },
-            password: 'required',
-        },
-        messages: {
-            email: {
-                required: 'Введите адрес электронной почты',
-                email   : 'Введите корректный адрес электронной почты',
-            },
-            password: 'Введите пароль',
-        },
-    }
-
-    $.extend(loginValidationSettings, config.validations);
-
-    $('#login-form').validate(loginValidationSettings);
 })
 
 // Валидация формы напоминания пароля
 $(function() {
-    if (!$('#reset-form').length) {
+    if (!$('#lost-form').length) {
         return false;
+    } else {
+        $('#lost-form').validate(config.validations);
     }
-
-    var resetValidationSettings = {
-        rules: {
-            email: {
-                required: true,
-                email   : true,
-            },
-        },
-        messages: {
-            email: {
-                required: 'Введите адрес электронной почты',
-                email   : 'Введите корректный адрес электронной почты',
-            },
-        },
-    }
-
-    $.extend(resetValidationSettings, config.validations);
-
-    $('#reset-form').validate(resetValidationSettings);
 })
 
 // Валидация формы регистрации
 $(function() {
     if (!$('#signup-form').length) {
         return false;
+    } else {
+        $('#signup-form').validate(config.validations);
     }
-
-    var signupValidationSettings = {
-        rules: {
-            name: {
-                required: true,
-            },
-            email: {
-                required: true,
-                email   : true,
-            },
-            agree: {
-                required: true,
-            },
-        },
-        errorPlacement: function(error, element) {
-            if (element.attr('name') == 'agree') {
-                error.insertAfter('#agree-text');
-            } else {
-                error.insertAfter(element);
-            }
-        },
-        messages: {
-            name: 'Введите ваше имя',
-            email: {
-                required: 'Введите адрес электронной почты',
-                email   : 'Введите корректный адрес электронной почты',
-            },
-            agree: 'Примите условия публичной офёрты',
-        },
-    }
-
-    $.extend(signupValidationSettings, config.validations);
-
-    $('#signup-form').validate(signupValidationSettings);
 });
 
 //
