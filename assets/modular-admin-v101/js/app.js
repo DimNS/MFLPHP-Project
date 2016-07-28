@@ -92,6 +92,15 @@ $(function() {
     }
 });
 
+// Валидация формы применения нового пароля
+$(function() {
+    if (!$('#reset-form').length) {
+        return false;
+    } else {
+        $('#reset-form').validate(config.validations);
+    }
+})
+
 //
 //
 //           db      `7MN.   `7MF'`7MMF'`7MMM.     ,MMF'      db   MMP""MM""YMM `7MM"""YMM
