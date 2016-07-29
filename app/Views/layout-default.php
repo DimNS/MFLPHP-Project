@@ -99,8 +99,6 @@
     <!-- modular-admin-html -->
     <script src="<?=$this->path?>/assets/modular-admin-v101/js/vendor.js" type="text/javascript"></script>
 
-    <script src="<?=$this->path?>/assets/js/config<?php print('1' === getenv('PRODUCTION') ? '.min' : ''); ?>.js?v=<?=md5_file(__DIR__ . '/../../assets/js/config' . ('1' === getenv('PRODUCTION') ? '.min' : '') . '.js')?>" type="text/javascript"></script>
-    <script src="<?=$this->path?>/assets/js/ajax<?php print('1' === getenv('PRODUCTION') ? '.min' : ''); ?>.js?v=<?=md5_file(__DIR__ . '/../../assets/js/ajax' . ('1' === getenv('PRODUCTION') ? '.min' : '') . '.js')?>" type="text/javascript"></script>
-    <script src="<?=$this->path?>/assets/js/app<?php print('1' === getenv('PRODUCTION') ? '.min' : ''); ?>.js?v=<?=md5_file(__DIR__ . '/../../assets/js/app' . ('1' === getenv('PRODUCTION') ? '.min' : '') . '.js')?>" type="text/javascript"></script>
+    <script src="<?=$this->path?>/assets/js/index.js?v=<?=md5_file(__DIR__ . '/../../assets/js/index.js')?>" type="text/javascript"></script>
 </body>
 </html>
