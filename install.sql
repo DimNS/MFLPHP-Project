@@ -5,7 +5,7 @@ CREATE TABLE `phpauth_attempts` (
   `ip` varchar(39) NOT NULL,
   `expiredate` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Настройки для библиотеки PHPAuth
 DROP TABLE IF EXISTS `phpauth_config`;
@@ -13,7 +13,7 @@ CREATE TABLE `phpauth_config` (
   `setting` varchar(100) NOT NULL,
   `value` varchar(100) DEFAULT NULL,
   UNIQUE KEY `setting` (`setting`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `phpauth_config` (`setting`, `value`) VALUES
 ('attack_mitigation_time',  '+30 minutes'),
@@ -64,7 +64,7 @@ CREATE TABLE `phpauth_requests` (
   `expire` datetime NOT NULL,
   `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Сессии пользователей
 DROP TABLE IF EXISTS `sessions`;
@@ -77,7 +77,7 @@ CREATE TABLE `sessions` (
   `agent` varchar(200) NOT NULL,
   `cookie_crc` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Таблица пользователей
 DROP TABLE IF EXISTS `users`;
@@ -88,7 +88,7 @@ CREATE TABLE `users` (
   `isactive` tinyint(1) NOT NULL DEFAULT '0',
   `dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `users` SET
   `id` = 1,
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `users_info` (
   `updated_at` datetime,
   PRIMARY KEY (`id`),
   KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `users_info` SET
   `uid` = 1,
