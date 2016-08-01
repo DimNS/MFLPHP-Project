@@ -17,15 +17,8 @@
             "MFLPHP\\Configs\\": "app/Configs/"
         }
     },
-    "repositories": [
-        {
-            "_url": "C:\\Users\\DimNS\\Documents\\GoogleDrive\\htdocs\\DimNS\\MFLPHP",
-            "url": "D:\\OneDrive\\work\\htdocs\\dimns\\MFLPHP",
-            "type": "path"
-        }
-    ],
     "require": {
         "php": ">=5.4.0",
-        "dimns/mflphp": "dev-develop"
+        "dimns/mflphp": "^0.2"
     }
 }
