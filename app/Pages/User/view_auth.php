@@ -8,16 +8,16 @@
             </header>
 
             <div class="auth-content">
-                <form id="login-form" action="<?=$this->path?>/user/login" method="post" novalidate="">
+                <form id="login-form" action="<?=$this->path?>/user/login" method="post">
                     <p class="text-<?=$this->message_code?>"><?=$this->message_text?></p>
                     <div class="form-group">
                         <label>Адрес электронной почты</label>
-                        <input type="email" class="form-control underlined" name="email" placeholder="Ваш адрес электронной почты" required>
+                        <input type="email" class="form-control underlined" name="email" placeholder="Ваш адрес электронной почты" data-rule-email="true" data-msg-required="Введите адрес электронной почты" data-msg-email="Введите корректный адрес электронной почты" required>
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
                         <a href="<?=$this->path?>/user/lost" class="pull-right">Я не помню пароль</a>
-                        <input type="password" class="form-control underlined" name="password" placeholder="Ваш пароль" required>
+                        <input type="password" class="form-control underlined" name="password" placeholder="Ваш пароль" data-msg-required="Введите пароль" required>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?=$this->csrf_token?>">

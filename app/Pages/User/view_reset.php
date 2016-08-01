@@ -9,14 +9,14 @@
 
             <div class="auth-content">
                 <p class="text-<?=$this->message_code?>"><?=$this->message_text?></p>
-                <form id="reset-form" action="<?=$this->path?>/user/reset" method="post" novalidate="">
+                <form id="reset-form" action="<?=$this->path?>/user/reset" method="post">
                     <div class="form-group">
                         <label>Укажите новый пароль</label>
-                        <input type="password" class="form-control underlined" name="password" placeholder="Пароль" required>
+                        <input type="password" class="form-control underlined" name="password" placeholder="Пароль" data-msg-required="Введите новый пароль" required>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?=$this->csrf_token?>">
-                        <input type="hidden" name="key" value="<?=$this->key?>">
+                        <input type="hidden" name="key" value="<?=$this->xss->__invoke($this->key)?>">
                         <button type="submit" class="btn btn-block btn-primary">Сохранить новый пароль</button>
                     </div>
                     <div class="form-group clearfix">

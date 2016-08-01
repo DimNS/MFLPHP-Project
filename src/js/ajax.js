@@ -1,11 +1,11 @@
 /**
- * Основной файл приложения
+ * Настройки AJAX
  *
- * @version 27.07.2016
+ * @version 29.07.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
-var app = (function() {
+var ajax = (function() {
     /**
      * Инициализация приложения
      *
@@ -134,4 +134,4 @@ var app = (function() {
     };
 })();
 
-app.init();
+ajax.init();
