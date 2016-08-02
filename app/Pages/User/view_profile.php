@@ -30,15 +30,15 @@ $date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->creat
                         <tr>
                         </tr>
                             <td>Электронная почта:</td>
-                            <td><strong id="js-profile-email"><?=$this->xss->__invoke($this->userinfo->email)?></strong></td>
+                            <td><strong id="js-profile-email"><?=xss($this->userinfo->email)?></strong></td>
                         <tr>
                         </tr>
                             <td>Имя:</td>
-                            <td><strong><?=$this->xss->__invoke($this->userinfo->name)?></strong></td>
+                            <td><strong><?=xss($this->userinfo->name)?></strong></td>
                         <tr>
                         </tr>
                             <td>Доступ:</td>
-                            <td><strong><?=$this->xss->__invoke($this->userinfo->access)?></strong></td>
+                            <td><strong><?=xss($this->userinfo->access)?></strong></td>
                         </tr>
                     </tbody>
                 </table>

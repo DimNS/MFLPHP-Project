@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="_token" value="<?=$this->csrf_token?>">
-                        <input type="hidden" name="key" value="<?=$this->xss->__invoke($this->key)?>">
+                        <input type="hidden" name="key" value="<?=xss($this->key)?>">
                         <button type="submit" class="btn btn-block btn-primary">Сохранить новый пароль</button>
                     </div>
                     <div class="form-group clearfix">
