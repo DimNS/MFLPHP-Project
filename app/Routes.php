@@ -2,7 +2,7 @@
 /**
  * Маршруты приложения
  *
- * @version 27.07.2016
+ * @version 02.08.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -50,7 +50,7 @@ $klein->with('/user', function () use ($klein) {
         if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
             $page->changePassword();
         } else {
-            InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response, $service);
         }
     });
 
@@ -60,7 +60,7 @@ $klein->with('/user', function () use ($klein) {
         if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
             $page->changeEmail();
         } else {
-            InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response, $service);
         }
     });
 
@@ -70,7 +70,7 @@ $klein->with('/user', function () use ($klein) {
         if ($di->csrf->validateToken($request->param('_token'))) {
             $page->login();
         } else {
-            InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response, $service);
         }
     });
 
@@ -86,7 +86,7 @@ $klein->with('/user', function () use ($klein) {
             if ($di->csrf->validateToken($request->param('_token'))) {
                 $page->lost();
             } else {
-                InvalidToken::getResponse($request, $response);
+                InvalidToken::getResponse($request, $response, $service);
             }
         } else {
             $page->lost();
@@ -100,7 +100,7 @@ $klein->with('/user', function () use ($klein) {
             if ($di->csrf->validateToken($request->param('_token'))) {
                 $page->register();
             } else {
-                InvalidToken::getResponse($request, $response);
+                InvalidToken::getResponse($request, $response, $service);
             }
         } else {
             $page->register();
@@ -118,7 +118,7 @@ $klein->with('/user', function () use ($klein) {
         if ($di->csrf->validateToken($request->param('_token'))) {
             $page->reset();
         } else {
-            InvalidToken::getResponse($request, $response);
+            InvalidToken::getResponse($request, $response, $service);
         }
     });
 });
