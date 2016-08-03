@@ -19,6 +19,6 @@
     },
     "require": {
         "php": ">=5.4.0",
-        "dimns/mflphp": "^0.2"
+        "dimns/mflphp": "*"
     }
 }
