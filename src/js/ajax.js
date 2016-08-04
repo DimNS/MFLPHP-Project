@@ -1,7 +1,7 @@
 /**
  * Настройки AJAX
  *
- * @version 29.07.2016
+ * @version 04.08.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -11,7 +11,7 @@ var ajax = (function() {
      *
      * @return null
      *
-     * @version 27.07.2016
+     * @version 04.08.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var init = function() {
@@ -37,10 +37,10 @@ var ajax = (function() {
      *
      * @return null
      *
-     * @version 27.07.2016
+     * @version 04.08.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    function ajaxError(status, text) {
+    function error(status, text) {
         switch (status) {
             case 'timeout'    : alert('Время ожидания истекло'); break;
             case 'parsererror': alert('Ошибка парсера'); break;
@@ -57,10 +57,10 @@ var ajax = (function() {
      *
      * @return null
      *
-     * @version 27.07.2016
+     * @version 04.08.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    function ajaxWaiter(action) {
+    function waiter(action) {
         if (action === 'show') {
             $('#js-ajaxwaiter-overlay, #js-ajaxwaiter-preloader').show();
         } else if (action === 'hide') {
@@ -70,7 +70,7 @@ var ajax = (function() {
 
     // Запрос на изменение пароля
     $('#js-profile-change-password').on('click', function() {
-        ajaxWaiter('show');
+        waiter('show');
 
         var form = '#js-profile-form-change-password';
 
@@ -89,17 +89,17 @@ var ajax = (function() {
                 alert(result.message);
             },
             complete: function() {
-                ajaxWaiter('hide');
+                waiter('hide');
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                ajaxError(textStatus, errorThrown);
+                error(textStatus, errorThrown);
             }
         });
     });
 
     // Запрос на изменение электронной почты
     $('#js-profile-change-email').on('click', function() {
-        ajaxWaiter('show');
+        waiter('show');
 
         var form     = '#js-profile-form-change-email';
         var newEmail = $(form + ' input[name="new_email"]').val();
@@ -121,16 +121,18 @@ var ajax = (function() {
                 alert(result.message);
             },
             complete: function() {
-                ajaxWaiter('hide');
+                waiter('hide');
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                ajaxError(textStatus, errorThrown);
+                error(textStatus, errorThrown);
             }
         });
     });
 
     return {
-        init: init,
+        init  : init,
+        waiter: waiter,
+        error : error,
     };
 })();
 
