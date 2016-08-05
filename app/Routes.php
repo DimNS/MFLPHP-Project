@@ -2,13 +2,13 @@
 /**
  * Маршруты приложения
  *
- * @version 02.08.2016
+ * @version 05.08.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
 namespace MyApp;
 
-use MFLPHP\Helpers\InvalidToken;
+use MFLPHP\Helpers\Middleware;
 use MFLPHP\Pages\User;
 
 //
@@ -23,8 +23,13 @@ use MFLPHP\Pages\User;
 //      MV
 //     AW
 $klein->respond('GET', '/', function ($request, $response, $service, $di) {
-    $page = new \MFLPHP\Pages\Main\Init($request, $response, $service, $di);
-    $page->start();
+    $middleware = Middleware::start($request, $response, $service, $di, [
+        'auth',
+    ]);
+    if ($middleware) {
+        $page = new \MFLPHP\Pages\Main\Init($request, $response, $service, $di);
+        $page->start();
+    }
 });
 
 //
@@ -40,37 +45,44 @@ $klein->respond('GET', '/', function ($request, $response, $service, $di) {
 //     AW
 $klein->with('/user', function () use ($klein) {
     $klein->respond('GET', '', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->getProfile();
+        $middleware = Middleware::start($request, $response, $service, $di, [
+            'auth',
+        ]);
+        if ($middleware) {
+            $page = new User\Init($request, $response, $service, $di);
+            $page->getProfile();
+        }
     });
 
     $klein->respond('POST', '/change-password', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-
-        if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
+        $middleware = Middleware::start($request, $response, $service, $di, [
+            'auth',
+            'token',
+        ]);
+        if ($middleware) {
+            $page = new User\Init($request, $response, $service, $di);
             $page->changePassword();
-        } else {
-            InvalidToken::getResponse($request, $response, $service);
         }
     });
 
     $klein->respond('POST', '/change-email', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-
-        if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
+        $middleware = Middleware::start($request, $response, $service, $di, [
+            'auth',
+            'token',
+        ]);
+        if ($middleware) {
+            $page = new User\Init($request, $response, $service, $di);
             $page->changeEmail();
-        } else {
-            InvalidToken::getResponse($request, $response, $service);
         }
     });
 
     $klein->respond('POST', '/login', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-
-        if ($di->csrf->validateToken($request->param('_token'))) {
+        $middleware = Middleware::start($request, $response, $service, $di, [
+            'token',
+        ]);
+        if ($middleware) {
+            $page = new User\Init($request, $response, $service, $di);
             $page->login();
-        } else {
-            InvalidToken::getResponse($request, $response, $service);
         }
     });
 
@@ -83,10 +95,11 @@ $klein->with('/user', function () use ($klein) {
         $page = new User\Init($request, $response, $service, $di);
 
         if ($request->method('post') === true) {
-            if ($di->csrf->validateToken($request->param('_token'))) {
+            $middleware = Middleware::start($request, $response, $service, $di, [
+                'token',
+            ]);
+            if ($middleware) {
                 $page->lost();
-            } else {
-                InvalidToken::getResponse($request, $response, $service);
             }
         } else {
             $page->lost();
@@ -97,10 +110,11 @@ $klein->with('/user', function () use ($klein) {
         $page = new User\Init($request, $response, $service, $di);
 
         if ($request->method('post') === true) {
-            if ($di->csrf->validateToken($request->param('_token'))) {
+            $middleware = Middleware::start($request, $response, $service, $di, [
+                'token',
+            ]);
+            if ($middleware) {
                 $page->register();
-            } else {
-                InvalidToken::getResponse($request, $response, $service);
             }
         } else {
             $page->register();
@@ -113,12 +127,12 @@ $klein->with('/user', function () use ($klein) {
     });
 
     $klein->respond('POST', '/reset', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-
-        if ($di->csrf->validateToken($request->param('_token'))) {
+        $middleware = Middleware::start($request, $response, $service, $di, [
+            'token',
+        ]);
+        if ($middleware) {
+            $page = new User\Init($request, $response, $service, $di);
             $page->reset();
-        } else {
-            InvalidToken::getResponse($request, $response, $service);
         }
     });
 });

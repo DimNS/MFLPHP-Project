@@ -11,54 +11,19 @@
 - Переходим в каталог созданного проекта.
 - Запускаем `gulp build`.
 
-## Примеры
-
-### Проверка идентификации
+## Middleware
+Для проверки "пользователь в системе", "валидный токен" или "есть необходимые права доступа" достаточно выполнить хелпера-посредника:
 ```php
-use MFLPHP\Helpers\NeedLogin;
-
-if ($di->auth->isLogged()) {
-    // Пользователь залогинен, можно продолжать
-} else {
-    NeedLogin::getResponse($request, $response, $service, $di);
+$middleware = \MFLPHP\Helpers\Middleware::start($request, $response, $service, $di, [
+    'auth',         // Пользователь залогинен в системе
+    'token',        // Проверка валидности защитного csrf-токена
+    'access-admin', // Проверка прав доступа
+]);
+if ($middleware) {
+    // Этот код выполняется если все проверки выполнены
 }
 ```
-
-### Проверка авторизации
-```php
-use MFLPHP\Helpers\AccessDenied;
-use MFLPHP\Helpers\IsAdmin;
-
-if (IsAdmin::check($di->userinfo->access)) {
-    // Доступ разрешён
-} else {
-    // Доступ запрещён
-    // В зависимости от запроса возвращаем json-ответ или показываем страницу с ошибкой
-    AccessDenied::getResponse($request, $response, $service);
-}
-```
-
-### Проверка валидности защитного csrf-токена (запрос через AJAX)
-```php
-use MFLPHP\Helpers\InvalidToken;
-
-if ($di->csrf->validateToken($request->server()->get('HTTP_X_CSRFTOKEN', ''))) {
-    // Токен успешно прошёл проверку
-} else {
-    InvalidToken::getResponse($request, $response, $service);
-}
-```
-
-### Проверка валидности защитного csrf-токена (запрос через форму)
-```php
-use MFLPHP\Helpers\InvalidToken;
-
-if ($di->csrf->validateToken($request->param('_token'))) {
-    // Токен успешно прошёл проверку
-} else {
-    InvalidToken::getResponse($request, $response, $service);
-}
-```
+## Примеры хелперов
 
 ### Отправка письма
 ```php
