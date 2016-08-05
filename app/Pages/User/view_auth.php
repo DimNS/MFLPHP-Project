@@ -3,12 +3,12 @@
         <div class="card">
             <header class="auth-header">
                 <h1 class="auth-title">
-                    <img src="<?=$this->path?>/assets/img/logo.png">
+                    <img src="<?=$this->path?>assets/img/logo.png">
                 </h1>
             </header>
 
             <div class="auth-content">
-                <form id="login-form" action="<?=$this->path?>/user/login" method="post">
+                <form id="login-form" action="<?=$this->path?>user/login" method="post">
                     <p class="text-<?=$this->message_code?>"><?=$this->message_text?></p>
                     <div class="form-group">
                         <label>Адрес электронной почты</label>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <a href="<?=$this->path?>/user/lost" class="pull-right">Я не помню пароль</a>
+                        <a href="<?=$this->path?>user/lost" class="pull-right">Я не помню пароль</a>
                         <input type="password" class="form-control underlined" name="password" placeholder="Ваш пароль" data-msg-required="Введите пароль" required>
                     </div>
                     <div class="form-group">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <p class="text-muted text-xs-center">
-                            У вас нет аккаунта? <a href="<?=$this->path?>/user/register">Зарегистрироваться!</a>
+                            У вас нет аккаунта? <a href="<?=$this->path?>user/register">Зарегистрироваться!</a>
                         </p>
                     </div>
                 </form>

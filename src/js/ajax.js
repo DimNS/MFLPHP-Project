@@ -1,7 +1,7 @@
 /**
  * Настройки AJAX
  *
- * @version 04.08.2016
+ * @version 05.08.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -75,7 +75,7 @@ var ajax = (function() {
         var form = '#js-profile-form-change-password';
 
         $.ajax({
-            url: pathRoot + '/user/change-password',
+            url: pathRoot + 'user/change-password',
             data: {
                 'new_password': $(form + ' input[name="new_password"]').val(),
                 'old_password': $(form + ' input[name="old_password"]').val(),
@@ -105,7 +105,7 @@ var ajax = (function() {
         var newEmail = $(form + ' input[name="new_email"]').val();
 
         $.ajax({
-            url: pathRoot + '/user/change-email',
+            url: pathRoot + 'user/change-email',
             data: {
                 'new_email': newEmail,
                 'password' : $(form + ' input[name="password"]').val(),
