@@ -92,13 +92,15 @@
         <img src="<?=$this->path?>assets/img/preloader.gif" title="Идёт загрузка...">
     </div>
 
-    <script type="text/javascript">
-        var pathRoot = '<?=$this->path?>';
-    </script>
-
     <!-- modular-admin-html -->
     <script src="<?=$this->path?>assets/modular-admin-v101/js/vendor.js?v=<?=md5_file(__DIR__ . '/../../assets/modular-admin-v101/js/vendor.js')?>" type="text/javascript"></script>
 
     <script src="<?=$this->path?>assets/js/index.js?v=<?=md5_file(__DIR__ . '/../../assets/js/index.js')?>" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var pathRoot = '<?=$this->path?>';
+
+        app.init();
+    </script>
 </body>
 </html>

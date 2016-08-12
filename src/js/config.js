@@ -1,7 +1,7 @@
 /**
  * Основные настройки
  *
- * @version 29.07.2016
+ * @version 12.08.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -215,5 +215,3 @@ var settings = (function() {
         init: init,
     };
 })();
-
-settings.init();

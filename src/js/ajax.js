@@ -1,7 +1,7 @@
 /**
  * Настройки AJAX
  *
- * @version 05.08.2016
+ * @version 12.08.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -135,5 +135,3 @@ var ajax = (function() {
         error : error,
     };
 })();
-
-ajax.init();
