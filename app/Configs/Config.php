@@ -1,8 +1,8 @@
 <?php
 /**
- * Настройки
+ * Конфигурация
  *
- * @version 27.07.2016
+ * @version 30.08.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -36,7 +36,7 @@ class Config
      *
      * @return null
      *
-     * @version 27.07.2016
+     * @version 30.08.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     public function __construct()
@@ -45,7 +45,7 @@ class Config
         $this->time = time();
 
         // Определим полный путь до корня проекта
-        $this->abs_root_path = $_SERVER['DOCUMENT_ROOT'] . getenv('PATH_SHORT_ROOT');
+        $this->abs_root_path = $_SERVER['DOCUMENT_ROOT'] . Settings::PATH_SHORT_ROOT;
 
         // Шаблоны для писем
         $this->email_templates = [
