@@ -2,13 +2,14 @@
 /**
  * Маршруты приложения
  *
- * @version 05.08.2016
+ * @version 08.09.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
 namespace MyApp;
 
 use MFLPHP\Helpers\Middleware;
+use MFLPHP\Pages\Main;
 use MFLPHP\Pages\User;
 
 //
@@ -23,13 +24,8 @@ use MFLPHP\Pages\User;
 //      MV
 //     AW
 $klein->respond('GET', '/', function ($request, $response, $service, $di) {
-    $middleware = Middleware::start($request, $response, $service, $di, [
-        'auth',
-    ]);
-    if ($middleware) {
-        $page = new \MFLPHP\Pages\Main\Init($request, $response, $service, $di);
-        $page->start();
-    }
+    $page = new Main\Init($request, $response, $service, $di);
+    $page->start();
 });
 
 //
@@ -45,45 +41,23 @@ $klein->respond('GET', '/', function ($request, $response, $service, $di) {
 //     AW
 $klein->with('/user', function () use ($klein) {
     $klein->respond('GET', '', function ($request, $response, $service, $di) {
-        $middleware = Middleware::start($request, $response, $service, $di, [
-            'auth',
-        ]);
-        if ($middleware) {
-            $page = new User\Init($request, $response, $service, $di);
-            $page->getProfile();
-        }
+        $page = new User\Init($request, $response, $service, $di);
+        $page->getProfile();
     });
 
     $klein->respond('POST', '/change-password', function ($request, $response, $service, $di) {
-        $middleware = Middleware::start($request, $response, $service, $di, [
-            'auth',
-            'token',
-        ]);
-        if ($middleware) {
-            $page = new User\Init($request, $response, $service, $di);
-            $page->changePassword();
-        }
+        $page = new User\Init($request, $response, $service, $di);
+        $page->changePassword();
     });
 
     $klein->respond('POST', '/change-email', function ($request, $response, $service, $di) {
-        $middleware = Middleware::start($request, $response, $service, $di, [
-            'auth',
-            'token',
-        ]);
-        if ($middleware) {
-            $page = new User\Init($request, $response, $service, $di);
-            $page->changeEmail();
-        }
+        $page = new User\Init($request, $response, $service, $di);
+        $page->changeEmail();
     });
 
     $klein->respond('POST', '/login', function ($request, $response, $service, $di) {
-        $middleware = Middleware::start($request, $response, $service, $di, [
-            'token',
-        ]);
-        if ($middleware) {
-            $page = new User\Init($request, $response, $service, $di);
-            $page->login();
-        }
+        $page = new User\Init($request, $response, $service, $di);
+        $page->login();
     });
 
     $klein->respond('GET', '/logout', function ($request, $response, $service, $di) {
@@ -93,32 +67,12 @@ $klein->with('/user', function () use ($klein) {
 
     $klein->respond(['GET', 'POST'], '/lost', function ($request, $response, $service, $di) {
         $page = new User\Init($request, $response, $service, $di);
-
-        if ($request->method('post') === true) {
-            $middleware = Middleware::start($request, $response, $service, $di, [
-                'token',
-            ]);
-            if ($middleware) {
-                $page->lost();
-            }
-        } else {
-            $page->lost();
-        }
+        $page->lost();
     });
 
     $klein->respond(['GET', 'POST'], '/register', function ($request, $response, $service, $di) {
         $page = new User\Init($request, $response, $service, $di);
-
-        if ($request->method('post') === true) {
-            $middleware = Middleware::start($request, $response, $service, $di, [
-                'token',
-            ]);
-            if ($middleware) {
-                $page->register();
-            }
-        } else {
-            $page->register();
-        }
+        $page->register();
     });
 
     $klein->respond('GET', '/reset/[:key]', function ($request, $response, $service, $di) {
@@ -127,13 +81,8 @@ $klein->with('/user', function () use ($klein) {
     });
 
     $klein->respond('POST', '/reset', function ($request, $response, $service, $di) {
-        $middleware = Middleware::start($request, $response, $service, $di, [
-            'token',
-        ]);
-        if ($middleware) {
-            $page = new User\Init($request, $response, $service, $di);
-            $page->reset();
-        }
+        $page = new User\Init($request, $response, $service, $di);
+        $page->reset();
     });
 });
 
