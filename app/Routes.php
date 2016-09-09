@@ -2,7 +2,7 @@
 /**
  * Маршруты приложения
  *
- * @version 08.09.2016
+ * @version 09.09.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -23,10 +23,7 @@ use MFLPHP\Pages\User;
 //      ,M'
 //      MV
 //     AW
-$klein->respond('GET', '/', function ($request, $response, $service, $di) {
-    $page = new Main\Init($request, $response, $service, $di);
-    $page->start();
-});
+$klein->respond('GET', '/', [new Main\ControllerStart(), 'start']);
 
 //
 //           AW
@@ -40,50 +37,14 @@ $klein->respond('GET', '/', function ($request, $response, $service, $di) {
 //      MV
 //     AW
 $klein->with('/user', function () use ($klein) {
-    $klein->respond('GET', '', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->getProfile();
-    });
-
-    $klein->respond('POST', '/change-password', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->changePassword();
-    });
-
-    $klein->respond('POST', '/change-email', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->changeEmail();
-    });
-
-    $klein->respond('POST', '/login', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->login();
-    });
-
-    $klein->respond('GET', '/logout', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->logout();
-    });
-
-    $klein->respond(['GET', 'POST'], '/lost', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->lost();
-    });
-
-    $klein->respond(['GET', 'POST'], '/register', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->register();
-    });
-
-    $klein->respond('GET', '/reset/[:key]', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->reset();
-    });
-
-    $klein->respond('POST', '/reset', function ($request, $response, $service, $di) {
-        $page = new User\Init($request, $response, $service, $di);
-        $page->reset();
-    });
+    $klein->respond('GET'          , ''                , [new User\ControllerGetProfile(), 'start']);
+    $klein->respond('POST'         , '/change-password', [new User\ControllerChangePassword(), 'start']);
+    $klein->respond('POST'         , '/change-email'   , [new User\ControllerChangeEmail(), 'start']);
+    $klein->respond('POST'         , '/login'          , [new User\ControllerLogin(), 'start']);
+    $klein->respond('GET'          , '/logout'         , [new User\ControllerLogout(), 'start']);
+    $klein->respond(['GET', 'POST'], '/lost'           , [new User\ControllerLost(), 'start']);
+    $klein->respond(['GET', 'POST'], '/register'       , [new User\ControllerRegister(), 'start']);
+    $klein->respond(['GET', 'POST'], '/reset/[:key]?'  , [new User\ControllerReset(), 'start']);
 });
 
 //
