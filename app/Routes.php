@@ -58,7 +58,7 @@ $klein->with('/user', function () use ($klein) {
 //      `Ybmd9'.JMML  JMML..JMML.  .JMML. `Mbmo  `Mbmo  MMbmmd'.JMMmmmmMMM .JMML.   .JMML.   `Ybmd9'.JMML.
 //                                                      MM
 //                                                    .JMML.
-$klein->onHttpError(function ($code, $router) use ($di) {
+$klein->onHttpError(function($code, $router) {
     $router->service()->uri           = $router->request()->uri();
     $router->service()->external_page = true;
 
