@@ -2,7 +2,7 @@
 /**
  * Параметры
  *
- * @version 30.08.2016
+ * @version 11.11.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -29,4 +29,17 @@ class Settings
     const DB_DATABASE = 'mflphp';
     const DB_USER     = 'root';
     const DB_PASSWORD = '';
+
+    // Где будут хранится php сессии:
+    // FILE - В файлах
+    // DB   - В таблице базы данных (используется библиотека stefangabos/zebra_session),
+    // ВНИМАНИЕ!!! DB ПОКА НЕ ПОДДЕРЖИВАЕТ PHP7
+    //        CREATE TABLE `session_data` (
+    //          `session_id` varchar(32) NOT NULL default '',
+    //          `hash` varchar(32) NOT NULL default '',
+    //          `session_data` blob NOT NULL,
+    //          `session_expire` int(11) NOT NULL default '0',
+    //          PRIMARY KEY  (`session_id`)
+    //        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    const PHP_SESSION = 'FILE';
 }
