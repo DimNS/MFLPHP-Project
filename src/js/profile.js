@@ -1,7 +1,7 @@
 /**
  * Работа с профилем
  *
- * @version 06.09.2016
+ * @version 14.11.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -48,12 +48,12 @@ var profile = (function() {
      *
      * @return null
      *
-     * @version 06.09.2016
+     * @version 14.11.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangePassword = function() {
         $('#js-profile-change-password').on('click', function() {
-            waiter('show');
+            ajax.waiter('show');
 
             var form = '#js-profile-form-change-password';
 
@@ -72,10 +72,10 @@ var profile = (function() {
                     alert(result.message);
                 },
                 complete: function() {
-                    waiter('hide');
+                    ajax.waiter('hide');
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    error(textStatus, errorThrown);
+                    ajax.error(textStatus, errorThrown);
                 }
             });
         });
@@ -98,12 +98,12 @@ var profile = (function() {
      *
      * @return null
      *
-     * @version 06.09.2016
+     * @version 14.11.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangeEmail = function() {
         $('#js-profile-change-email').on('click', function() {
-            waiter('show');
+            ajax.waiter('show');
 
             var form     = '#js-profile-form-change-email';
             var newEmail = $(form + ' input[name="new_email"]').val();
@@ -125,10 +125,10 @@ var profile = (function() {
                     alert(result.message);
                 },
                 complete: function() {
-                    waiter('hide');
+                    ajax.waiter('hide');
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    error(textStatus, errorThrown);
+                    ajax.error(textStatus, errorThrown);
                 }
             });
         });
