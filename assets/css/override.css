@@ -34,3 +34,11 @@ body {
     padding-left: 0;
     text-align: center;
 }
+
+.sidebar-header .brand img {
+    width: 100%;
+}
+
+.auth-title img {
+    width: 100%;
+}
