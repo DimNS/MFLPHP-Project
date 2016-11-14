@@ -58,7 +58,7 @@
                         <nav class="menu">
                             <ul class="nav metismenu" id="sidebar-menu">
                                 <li<?=($this->uri == '/' ? ' class="active"' : '')?>>
-                                    <a href="<?=$this->path?>"><i class="fa fa-home"></i> Главная</a>
+                                    <a href="<?=$this->path?>"><i class="fa fa-fw fa-home"></i> Главная</a>
                                 </li>
                             </ul>
                         </nav>
