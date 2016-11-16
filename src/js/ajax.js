@@ -1,7 +1,7 @@
 /**
  * Настройки AJAX
  *
- * @version 06.09.2016
+ * @version 16.11.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -37,16 +37,16 @@ var ajax = (function() {
      *
      * @return null
      *
-     * @version 04.08.2016
+     * @version 16.11.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     function error(status, text) {
         switch (status) {
-            case 'timeout'    : alert('Время ожидания истекло'); break;
-            case 'parsererror': alert('Ошибка парсера'); break;
-            case 'abort'      : alert('Запрос был отменён'); break;
-            case 'error'      : alert('Произошла ошибка сервера: ' + text); break;
-            default           : alert('Неизвестная ошибка'); break;
+            case 'timeout'    : swal('Произошла ошибка', 'Время ожидания истекло', 'error'); break;
+            case 'parsererror': swal('Произошла ошибка', 'Ошибка парсера', 'error'); break;
+            case 'abort'      : swal('Произошла ошибка', 'Запрос был отменён', 'error'); break;
+            case 'error'      : swal('Произошла ошибка', 'Произошла ошибка сервера: ' + text, 'error'); break;
+            default           : swal('Произошла ошибка', 'Неизвестная ошибка', 'error'); break;
         }
     }
 

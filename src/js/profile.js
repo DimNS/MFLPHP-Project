@@ -1,7 +1,7 @@
 /**
  * Работа с профилем
  *
- * @version 14.11.2016
+ * @version 16.11.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -48,7 +48,7 @@ var profile = (function() {
      *
      * @return null
      *
-     * @version 14.11.2016
+     * @version 16.11.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangePassword = function() {
@@ -67,9 +67,11 @@ var profile = (function() {
                     if (result.error === false) {
                         $(form + ' input[name="new_password"]').val('');
                         $(form + ' input[name="old_password"]').val('');
-                    }
 
-                    alert(result.message);
+                        swal('Выполнено', result.message, 'success');
+                    } else {
+                        swal('Произошла ошибка', result.message, 'error');
+                    }
                 },
                 complete: function() {
                     ajax.waiter('hide');
@@ -98,7 +100,7 @@ var profile = (function() {
      *
      * @return null
      *
-     * @version 14.11.2016
+     * @version 16.11.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangeEmail = function() {
@@ -120,9 +122,11 @@ var profile = (function() {
 
                         $(form + ' input[name="new_email"]').val('');
                         $(form + ' input[name="password"]').val('');
-                    }
 
-                    alert(result.message);
+                        swal('Выполнено', result.message, 'success');
+                    } else {
+                        swal('Произошла ошибка', result.message, 'error');
+                    }
                 },
                 complete: function() {
                     ajax.waiter('hide');
