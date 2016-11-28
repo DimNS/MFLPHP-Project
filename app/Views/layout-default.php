@@ -17,7 +17,7 @@
     <!-- sweetalert -->
     <link href="<?=$this->path?>assets/js/sweetalert/sweetalert2.css?v=<?=md5_file(__DIR__ . '/../../assets/js/sweetalert/sweetalert2.css')?>" rel="stylesheet" type="text/css">
 
-    <link href="<?=$this->path?>assets/css/style.css?v=<?=md5_file(__DIR__ . '/../../assets/css/style.css')?>" rel="stylesheet" type="text/css">
+    <link href="<?=$this->path?>assets/css/index.css?v=<?=md5_file(__DIR__ . '/../../assets/css/index.css')?>" rel="stylesheet" type="text/css">
     <link href="<?=$this->path?>assets/css/override.css?v=<?=md5_file(__DIR__ . '/../../assets/css/override.css')?>" rel="stylesheet" type="text/css">
 
     <title><?=$this->title?></title>
