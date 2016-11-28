@@ -36,9 +36,9 @@ body {
 }
 
 .sidebar-header .brand img {
-    width: 100%;
+    max-width: 200px;
 }
 
 .auth-title img {
-    width: 100%;
+    max-width: 350px;
 }
