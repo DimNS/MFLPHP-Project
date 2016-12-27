@@ -5,7 +5,7 @@
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
-var settings = (function() {
+var settings = (function () {
     /**
      * Инициализация приложения
      *
@@ -14,7 +14,7 @@ var settings = (function() {
      * @version 29.07.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    var init = function() {
+    var init = function () {
         //
         //
         //       .g8"""bgd   .g8""8q. `7MN.   `7MF'`7MM"""YMM `7MMF' .g8"""bgd
@@ -31,30 +31,30 @@ var settings = (function() {
 
         // Настройка валидатора форм
         config.validations = {
-            debug       : true,
-            errorClass  : 'has-error',
-            validClass  : 'success',
-            errorElement: 'span',
-            highlight: function(element, errorClass, validClass) {
+            debug         : true,
+            errorClass    : 'has-error',
+            validClass    : 'success',
+            errorElement  : 'span',
+            highlight     : function (element, errorClass, validClass) {
                 $(element).parents('div.form-group')
                     .addClass(errorClass)
                     .removeClass(validClass);
             },
-            unhighlight: function(element, errorClass, validClass) {
+            unhighlight   : function (element, errorClass, validClass) {
                 $(element).parents('.has-error')
                     .removeClass(errorClass)
                     .addClass(validClass);
             },
-            invalidHandler: function() {
+            invalidHandler: function () {
                 animate({
                     name    : 'shake',
-                    selector: '.auth-container > .card',
+                    selector: '.auth-container > .card'
                 });
             },
-            submitHandler: function(form) {
+            submitHandler : function (form) {
                 form.submit();
-            },
-        }
+            }
+        };
 
         // Настройки анимации
         function animate(options) {
@@ -64,7 +64,7 @@ var settings = (function() {
             $(options.selector)
                 .addClass(animationName)
                 .one(animationEnd,
-                    function(){
+                    function () {
                         $(this).removeClass(animationName);
                     }
                 );
@@ -82,41 +82,48 @@ var settings = (function() {
         //
         //
 
+        var formsSelector = {
+            'login' : '#login-form',
+            'lost'  : '#lost-form',
+            'signup': '#signup-form',
+            'reset' : '#reset-form'
+        };
+
         // Валидация формы входа
-        $(function() {
-            if (!$('#login-form').length) {
+        $(function () {
+            if (!$(formsSelector.login).length) {
                 return false;
             } else {
-                $('#login-form').validate(config.validations);
+                $(formsSelector.login).validate(config.validations);
             }
-        })
+        });
 
         // Валидация формы напоминания пароля
-        $(function() {
-            if (!$('#lost-form').length) {
+        $(function () {
+            if (!$(formsSelector.lost).length) {
                 return false;
             } else {
-                $('#lost-form').validate(config.validations);
+                $(formsSelector.lost).validate(config.validations);
             }
-        })
+        });
 
         // Валидация формы регистрации
-        $(function() {
-            if (!$('#signup-form').length) {
+        $(function () {
+            if (!$(formsSelector.signup).length) {
                 return false;
             } else {
-                $('#signup-form').validate(config.validations);
+                $(formsSelector.signup).validate(config.validations);
             }
         });
 
         // Валидация формы применения нового пароля
-        $(function() {
-            if (!$('#reset-form').length) {
+        $(function () {
+            if (!$(formsSelector.reset).length) {
                 return false;
             } else {
-                $('#reset-form').validate(config.validations);
+                $(formsSelector.reset).validate(config.validations);
             }
-        })
+        });
 
         //
         //
@@ -131,47 +138,47 @@ var settings = (function() {
         //
 
         // Анимация заголовка на странице ошибок
-        $(function() {
+        $(function () {
             animate({
                 name    : 'flipInY',
-                selector: '.error-card > .error-title-block',
+                selector: '.error-card > .error-title-block'
             });
 
-            setTimeout(function(){
+            setTimeout(function () {
                 var $el = $('.error-card > .error-container');
 
                 animate({
                     name    : 'fadeInUp',
-                    selector: $el,
+                    selector: $el
                 });
 
                 $el.addClass('visible');
             }, 1000);
-        })
+        });
 
         // Анимация выпадающего меню пользователя
-        $(function() {
-            $('.nav-profile > li > a').on('click', function() {
+        $(function () {
+            $('.nav-profile > li > a').on('click', function () {
                 var $el = $(this).next();
 
                 animate({
-                    name: 'flipInX',
+                    name    : 'flipInX',
                     selector: $el
                 });
             });
-        })
+        });
 
         // Анимация фокуса полей ввода
-        $(function() {
-            if (!$('.form-control').length) {
+        $(function () {
+            var elemFC = $('.form-control');
+
+            if (!elemFC.length) {
                 return false;
             }
 
-            $('.form-control').focus(function() {
+            elemFC.focus(function () {
                 $(this).siblings('.input-group-addon').addClass('focus');
-            });
-
-            $('.form-control').blur(function() {
+            }).blur(function () {
                 $(this).siblings('.input-group-addon').removeClass('focus');
             });
         });
@@ -194,24 +201,24 @@ var settings = (function() {
                 activeClass: 'open'
             });
 
-            $('#sidebar-collapse-btn').on('click', function(event){
+            $('#sidebar-collapse-btn').on('click', function (event) {
                 event.preventDefault();
 
                 $('#app').toggleClass('sidebar-open');
             });
 
-            $('#sidebar-overlay').on('click', function() {
+            $('#sidebar-overlay').on('click', function () {
                 $('#app').removeClass('sidebar-open');
             });
         });
 
         // Покажем что документ загружен
-        $(function() {
+        $(function () {
             $("body").addClass("loaded");
         });
     };
 
     return {
-        init: init,
+        init: init
     };
 })();

@@ -25,15 +25,15 @@ var ajax = (function () {
                 if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
                     xhr.setRequestHeader("X-CSRFToken", $('meta[name="_token"]').attr('content'));
                 }
-            },
+            }
         });
     };
 
     /**
      * Показать ошибку выполнения AJAX
      *
-     * @param string status Код ошибки
-     * @param string text   Текст ошибки сервера
+     * @param status Код ошибки (string)
+     * @param text   Текст ошибки сервера (string)
      *
      * @return null
      *
@@ -65,7 +65,7 @@ var ajax = (function () {
     /**
      * Показать \ Скрыть окно ожидания ответа AJAX
      *
-     * @param string action Действие (show|hide)
+     * @param action Действие (string:show|hide)
      *
      * @return null
      *

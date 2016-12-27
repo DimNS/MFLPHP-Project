@@ -5,7 +5,7 @@
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
-var profile = (function() {
+var profile = (function () {
     //
     //       ,,                ,,
     //       db                db   mm
@@ -26,7 +26,7 @@ var profile = (function() {
      * @version 06.09.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    var init = function() {
+    var init = function () {
         _bindChangePassword();
         _bindChangeEmail();
     };
@@ -51,19 +51,19 @@ var profile = (function() {
      * @version 16.11.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    var _bindChangePassword = function() {
-        $('#js-profile-change-password').on('click', function() {
+    var _bindChangePassword = function () {
+        $('#js-profile-change-password').on('click', function () {
             ajax.waiter('show');
 
             var form = '#js-profile-form-change-password';
 
             $.ajax({
-                url: pathRoot + 'user/change-password',
-                data: {
+                url     : pathRoot + 'user/change-password',
+                data    : {
                     'new_password': $(form + ' input[name="new_password"]').val(),
-                    'old_password': $(form + ' input[name="old_password"]').val(),
+                    'old_password': $(form + ' input[name="old_password"]').val()
                 },
-                success: function(result, textStatus, jqXHR) {
+                success : function (result) {
                     if (result.error === false) {
                         $(form + ' input[name="new_password"]').val('');
                         $(form + ' input[name="old_password"]').val('');
@@ -73,10 +73,10 @@ var profile = (function() {
                         swal('Произошла ошибка', result.message, 'error');
                     }
                 },
-                complete: function() {
+                complete: function () {
                     ajax.waiter('hide');
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error   : function (jqXHR, textStatus, errorThrown) {
                     ajax.error(textStatus, errorThrown);
                 }
             });
@@ -103,20 +103,20 @@ var profile = (function() {
      * @version 16.11.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    var _bindChangeEmail = function() {
-        $('#js-profile-change-email').on('click', function() {
+    var _bindChangeEmail = function () {
+        $('#js-profile-change-email').on('click', function () {
             ajax.waiter('show');
 
             var form     = '#js-profile-form-change-email';
             var newEmail = $(form + ' input[name="new_email"]').val();
 
             $.ajax({
-                url: pathRoot + 'user/change-email',
-                data: {
+                url     : pathRoot + 'user/change-email',
+                data    : {
                     'new_email': newEmail,
-                    'password' : $(form + ' input[name="password"]').val(),
+                    'password' : $(form + ' input[name="password"]').val()
                 },
-                success: function(result, textStatus, jqXHR) {
+                success : function (result) {
                     if (result.error === false) {
                         $('#js-profile-email').text(newEmail);
 
@@ -128,10 +128,10 @@ var profile = (function() {
                         swal('Произошла ошибка', result.message, 'error');
                     }
                 },
-                complete: function() {
+                complete: function () {
                     ajax.waiter('hide');
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error   : function (jqXHR, textStatus, errorThrown) {
                     ajax.error(textStatus, errorThrown);
                 }
             });
@@ -139,6 +139,6 @@ var profile = (function() {
     };
 
     return {
-        init: init,
+        init: init
     };
 })();
