@@ -5,7 +5,7 @@
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
-var app = (function() {
+var app = (function () {
     /**
      * Инициализация приложения
      *
@@ -14,7 +14,7 @@ var app = (function() {
      * @version 06.09.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    var init = function() {
+    var init = function () {
         ajax.init();
         settings.init();
 
@@ -24,6 +24,6 @@ var app = (function() {
     };
 
     return {
-        init: init,
+        init: init
     };
 })();
