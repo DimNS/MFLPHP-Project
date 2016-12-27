@@ -80,9 +80,35 @@ var ajax = (function () {
         }
     }
 
+    /**
+     * Вызов кроссдоменный AJAX используя JSONP
+     *
+     * @param url      Путь запроса (string)
+     * @param data     Объект с данными (object)
+     * @param callback Название вызываемой функции (string)
+     *
+     * @return null
+     *
+     * @version 27.12.2016
+     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     */
+    function jsonp(url, data, callback) {
+        $.ajax({
+            url     : url + '?callback=?',
+            type    : 'GET',
+            dataType: 'jsonp',
+            data    : data,
+            success : callback,
+            error   : function (jqXHR, textStatus, errorThrown) {
+                ajax.error(textStatus, errorThrown);
+            }
+        });
+    }
+
     return {
         init  : init,
         waiter: waiter,
         error : error,
+        jsonp : jsonp
     };
 })();
