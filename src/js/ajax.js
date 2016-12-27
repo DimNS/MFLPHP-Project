@@ -1,11 +1,11 @@
 /**
  * Настройки AJAX
  *
- * @version 16.11.2016
+ * @version 27.12.2016
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
-var ajax = (function() {
+var ajax = (function () {
     /**
      * Инициализация приложения
      *
@@ -14,13 +14,13 @@ var ajax = (function() {
      * @version 04.08.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
-    var init = function() {
+    var init = function () {
         // Настройки AJAX
         $.ajaxSetup({
-            timeout : 20000,
-            type    : 'POST',
-            dataType: 'json',
-            cache   : false,
+            timeout   : 20000,
+            type      : 'POST',
+            dataType  : 'json',
+            cache     : false,
             beforeSend: function (xhr, settings) {
                 if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
                     xhr.setRequestHeader("X-CSRFToken", $('meta[name="_token"]').attr('content'));
@@ -37,16 +37,28 @@ var ajax = (function() {
      *
      * @return null
      *
-     * @version 16.11.2016
+     * @version 27.12.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     function error(status, text) {
+        ajax.waiter('hide');
+
         switch (status) {
-            case 'timeout'    : swal('Произошла ошибка', 'Время ожидания истекло', 'error'); break;
-            case 'parsererror': swal('Произошла ошибка', 'Ошибка парсера', 'error'); break;
-            case 'abort'      : swal('Произошла ошибка', 'Запрос был отменён', 'error'); break;
-            case 'error'      : swal('Произошла ошибка', 'Произошла ошибка сервера: ' + text, 'error'); break;
-            default           : swal('Произошла ошибка', 'Неизвестная ошибка', 'error'); break;
+            case 'timeout'    :
+                swal('Произошла ошибка', 'Время ожидания истекло', 'error');
+                break;
+            case 'parsererror':
+                swal('Произошла ошибка', 'Ошибка парсера', 'error');
+                break;
+            case 'abort'      :
+                swal('Произошла ошибка', 'Запрос был отменён', 'error');
+                break;
+            case 'error'      :
+                swal('Произошла ошибка', 'Произошла ошибка сервера: ' + text, 'error');
+                break;
+            default           :
+                swal('Произошла ошибка', 'Неизвестная ошибка', 'error');
+                break;
         }
     }
 
