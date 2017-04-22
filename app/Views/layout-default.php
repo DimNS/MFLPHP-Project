@@ -8,9 +8,13 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="_token" content="<?=$this->csrf_token?>">
 
-    <!-- sweetalert -->
-    <link href="<?=$this->path?>assets/js/sweetalert/sweetalert2.css?v=<?=md5_file(__DIR__ . '/../../assets/js/sweetalert/sweetalert2.css')?>" rel="stylesheet" type="text/css">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- SweetAlert 2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.0/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+    <!-- App -->
     <link href="<?=$this->path?>assets/css/index.css?v=<?=md5_file(__DIR__ . '/../../assets/css/index.css')?>" rel="stylesheet" type="text/css">
 
     <title><?=$this->title?></title>
@@ -51,9 +55,13 @@
         <img src="<?=$this->path?>assets/img/preloader.gif" title="Идёт загрузка...">
     </div>
 
-    <!-- sweetalert -->
-    <script src="<?=$this->path?>assets/js/sweetalert/sweetalert2.min.js?v=<?=md5_file(__DIR__ . '/../../assets/js/sweetalert/sweetalert2.min.js')?>" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!-- SweetAlert 2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.0/sweetalert2.min.js" type="text/javascript"></script>
+
+    <!-- App -->
     <script src="<?=$this->path?>assets/js/index.js?v=<?=md5_file(__DIR__ . '/../../assets/js/index.js')?>" type="text/javascript"></script>
 
     <script type="text/javascript">
