@@ -29,7 +29,7 @@
             <a href="<?=$this->path?>"><img src="<?=$this->path?>assets/img/logo.png"></a>
         </p>
         <p>
-            <strong><?=$this->userinfo->name?></strong>
+            Вы вошли как: <strong><?=$this->userinfo->name?></strong>
         </p>
         <p>
             <a href="<?=$this->path?>"><i class="fa fa-home"></i> Главная</a>
