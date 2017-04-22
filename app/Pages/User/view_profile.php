@@ -1,9 +1,3 @@
-<?php
-$carbon = new \Carbon\Carbon();
-$carbon->setLocale('ru');
-
-$date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->created_at, 'UTC');
-?>
 <div id="js-page-profile">
     <h3>Профиль</h3>
 
@@ -16,7 +10,7 @@ $date_register = $carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->creat
             <tr>
             </tr>
                 <td>Дата регистрации:</td>
-                <td><strong><?=$date_register->format('d-m-Y')?></strong></td>
+                <td><strong><?=$this->di->carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->created_at)->format('d-m-Y')?></strong></td>
             <tr>
             </tr>
                 <td>Электронная почта:</td>
