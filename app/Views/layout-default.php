@@ -46,8 +46,8 @@
     }
     ?>
 
-    <div id="js-ajaxwaiter-overlay" class="ajaxwaiter-overlay"></div>
-    <div id="js-ajaxwaiter-preloader" class="ajaxwaiter-preloader">
+    <div id="js-ajaxwaiter-overlay" class="ajaxwaiter__overlay"></div>
+    <div id="js-ajaxwaiter-preloader" class="ajaxwaiter__preloader">
         <img src="<?=$this->path?>assets/img/preloader.gif" title="Идёт загрузка...">
     </div>
 
