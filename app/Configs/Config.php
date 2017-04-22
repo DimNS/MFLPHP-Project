@@ -2,7 +2,7 @@
 /**
  * Конфигурация
  *
- * @version 13.09.2016
+ * @version 22.04.2017
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -10,13 +10,6 @@ namespace MFLPHP\Configs;
 
 class Config
 {
-    /**
-     * Текущее время по гринвичу
-     *
-     * @var integer
-     */
-    public $time;
-
     /**
      * Полный путь до корня проекта
      *
@@ -34,9 +27,6 @@ class Config
      */
     public function __construct()
     {
-        // Текущее время по гринвичу
-        $this->time = time();
-
         // Определим полный путь до корня проекта
         $this->abs_root_path = $_SERVER['DOCUMENT_ROOT'] . Settings::PATH_SHORT_ROOT;
     }

@@ -8,17 +8,14 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="_token" content="<?=$this->csrf_token?>">
 
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400|Roboto:400,700&subset=cyrillic-ext" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- modular-admin-html -->
-    <link href="<?=$this->path?>assets/modular-admin-v101/css/vendor.css?v=<?=md5_file(__DIR__ . '/../../assets/modular-admin-v101/css/vendor.css')?>" rel="stylesheet" type="text/css">
-    <link href="<?=$this->path?>assets/modular-admin-v101/css/app-blue.css?v=<?=md5_file(__DIR__ . '/../../assets/modular-admin-v101/css/app-blue.css')?>" rel="stylesheet" type="text/css">
+    <!-- SweetAlert 2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.0/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
-    <!-- sweetalert -->
-    <link href="<?=$this->path?>assets/js/sweetalert/sweetalert2.css?v=<?=md5_file(__DIR__ . '/../../assets/js/sweetalert/sweetalert2.css')?>" rel="stylesheet" type="text/css">
-
+    <!-- App -->
     <link href="<?=$this->path?>assets/css/index.css?v=<?=md5_file(__DIR__ . '/../../assets/css/index.css')?>" rel="stylesheet" type="text/css">
-    <link href="<?=$this->path?>assets/css/override.css?v=<?=md5_file(__DIR__ . '/../../assets/css/override.css')?>" rel="stylesheet" type="text/css">
 
     <title><?=$this->title?></title>
 </head>
@@ -28,82 +25,43 @@
         echo $this->yieldView();
     } else {
         ?>
-        <div class="main-wrapper">
-            <div class="app" id="app">
-                <header class="header">
-                    <div class="header-block header-block-collapse hidden-lg-up">
-                        <button class="collapse-btn" id="sidebar-collapse-btn"><i class="fa fa-bars"></i></button>
-                    </div>
-                    <div class="header-block header-block-nav">
-                        <ul class="nav-profile">
-                            <li class="profile dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span class="name"><?=$this->userinfo->name?></span>
-                                </a>
-                                <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <a class="dropdown-item" href="<?=$this->path?>user"><i class="fa fa-user icon"></i> Профиль</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?=$this->path?>user/logout"><i class="fa fa-power-off icon"></i> Выход</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </header>
+        <p>
+            <a href="<?=$this->path?>"><img src="<?=$this->path?>assets/img/logo.png"></a>
+        </p>
+        <p>
+            Вы вошли как: <strong><?=$this->userinfo->name?></strong>
+        </p>
+        <p>
+            <a href="<?=$this->path?>"><i class="fa fa-home"></i> Главная</a>
+            &nbsp;|&nbsp;
+            <a href="<?=$this->path?>user"><i class="fa fa-user"></i> Профиль</a>
+            &nbsp;|&nbsp;
+            <a href="<?=$this->path?>user/logout"><i class="fa fa-power-off"></i> Выход</a>
+        </p>
 
-                <aside class="sidebar">
-                    <div class="sidebar-container">
-                        <div class="sidebar-header">
-                            <div class="brand">
-                                <a href="<?=$this->path?>"><img src="<?=$this->path?>assets/img/logo-white.png"></a>
-                            </div>
-                        </div>
-                        <nav class="menu">
-                            <ul class="nav metismenu" id="sidebar-menu">
-                                <li<?=($this->uri == '/' ? ' class="active"' : '')?>>
-                                    <a href="<?=$this->path?>"><i class="fa fa-fw fa-home"></i> Главная</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </aside>
+        <?=$this->yieldView()?>
 
-                <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-                <article class="content">
-                    <?=$this->yieldView()?>
-                </article>
-
-                <footer class="footer">
-                    <div class="footer-block buttons">
-                        <iframe class="footer-github-btn" src="https://ghbtns.com/github-btn.html?user=dimns&repo=mflphp-project&type=star&count=true" frameborder="0" scrolling="0" width="140px" height="20px"></iframe>
-                    </div>
-                    <div class="footer-block author">
-                        <?php
-                        $begin_year = 2016;
-                        $copy_date = (date('Y') == $begin_year ? $begin_year : $begin_year . '-' . date('Y'));
-                        ?>
-                        <ul>
-                            <li><?=$copy_date?> &copy; <a href="https://github.com/dimns">DimNS</a></li>
-                        </ul>
-                    </div>
-                </footer>
-            </div>
-        </div>
+        <?php
+        $begin_year = 2016;
+        $copy_date = (date('Y') == $begin_year ? $begin_year : $begin_year . '-' . date('Y'));
+        ?>
+        <?=$copy_date?> &copy; <a href="https://github.com/dimns">DimNS</a>
         <?php
     }
     ?>
 
-    <div id="js-ajaxwaiter-overlay" class="ajaxwaiter-overlay"></div>
-    <div id="js-ajaxwaiter-preloader" class="ajaxwaiter-preloader">
+    <div id="js-ajaxwaiter-overlay" class="ajaxwaiter__overlay"></div>
+    <div id="js-ajaxwaiter-preloader" class="ajaxwaiter__preloader">
         <img src="<?=$this->path?>assets/img/preloader.gif" title="Идёт загрузка...">
     </div>
 
-    <!-- modular-admin-html -->
-    <script src="<?=$this->path?>assets/modular-admin-v101/js/vendor.js?v=<?=md5_file(__DIR__ . '/../../assets/modular-admin-v101/js/vendor.js')?>" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- sweetalert -->
-    <script src="<?=$this->path?>assets/js/sweetalert/sweetalert2.min.js?v=<?=md5_file(__DIR__ . '/../../assets/js/sweetalert/sweetalert2.min.js')?>" type="text/javascript"></script>
+    <!-- SweetAlert 2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.0/sweetalert2.min.js" type="text/javascript"></script>
 
+    <!-- App -->
     <script src="<?=$this->path?>assets/js/index.js?v=<?=md5_file(__DIR__ . '/../../assets/js/index.js')?>" type="text/javascript"></script>
 
     <script type="text/javascript">

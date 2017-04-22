@@ -1,6 +1,4 @@
-<div class="title-block">
-    <h3 class="title">Главная</h3>
-</div>
+<h3>Главная</h3>
 
 <p>
     dashboard

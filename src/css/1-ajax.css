@@ -1,4 +1,4 @@
-.ajaxwaiter-overlay {
+.ajaxwaiter__overlay {
     position: fixed;
     z-index: 5000;
     display: none;
@@ -11,7 +11,7 @@
     filter: alpha(opacity=40);
 }
 
-.ajaxwaiter-preloader {
+.ajaxwaiter__preloader {
     position: fixed;
     z-index: 5100;
     display: none;
