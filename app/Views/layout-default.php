@@ -20,19 +20,19 @@
         echo $this->yieldView();
     } else {
         ?>
-        <p>
+        <div>
             <a href="<?=$this->path?>"><img src="<?=$this->path?>assets/img/logo.png"></a>
-        </p>
-        <p>
+        </div>
+        <div>
             Вы вошли как: <strong><?=$this->userinfo->name?></strong>
-        </p>
-        <p>
+        </div>
+        <div>
             <a href="<?=$this->path?>">Главная</a>
             &nbsp;|&nbsp;
             <a href="<?=$this->path?>user">Профиль</a>
             &nbsp;|&nbsp;
             <a href="<?=$this->path?>user/logout">Выход</a>
-        </p>
+        </div>
 
         <?=$this->yieldView()?>
 

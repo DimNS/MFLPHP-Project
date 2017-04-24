@@ -1,7 +1,7 @@
 <div id="js-page-profile">
     <h3>Профиль</h3>
 
-    <p><strong>Мои данные</strong></p>
+    <div><strong>Мои данные</strong></div>
     <table>
         <tbody>
             <tr>
@@ -27,13 +27,13 @@
         </tbody>
     </table>
 
-    <p><strong>Смена пароля</strong></p>
-    <p><input type="password" name="new_password" placeholder="Новый пароль"></p>
-    <p><input type="password" name="old_password" placeholder="Старый пароль"></p>
+    <div><strong>Смена пароля</strong></div>
+    <div><input type="password" name="new_password" placeholder="Новый пароль"></div>
+    <div><input type="password" name="old_password" placeholder="Старый пароль"></div>
     <button id="js-profile-change-password">Сохранить новый пароль</button>
 
-    <p><strong>Смена адреса электронной почты</strong></p>
-    <p><input type="text" name="new_email" placeholder="Новый адрес электронной почты"></p>
-    <p><input type="password" name="password" placeholder="Текущий пароль"></p>
+    <div><strong>Смена адреса электронной почты</strong></div>
+    <div><input type="text" name="new_email" placeholder="Новый адрес электронной почты"></div>
+    <div><input type="password" name="password" placeholder="Текущий пароль"></div>
     <button id="js-profile-change-email">Сохранить новый адрес электронной почты</button>
 </div>
