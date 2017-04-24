@@ -8,9 +8,6 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="_token" content="<?=$this->csrf_token?>">
 
-    <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <!-- SweetAlert 2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.0/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
@@ -32,11 +29,11 @@
             Вы вошли как: <strong><?=$this->userinfo->name?></strong>
         </p>
         <p>
-            <a href="<?=$this->path?>"><i class="fa fa-home"></i> Главная</a>
+            <a href="<?=$this->path?>">Главная</a>
             &nbsp;|&nbsp;
-            <a href="<?=$this->path?>user"><i class="fa fa-user"></i> Профиль</a>
+            <a href="<?=$this->path?>user">Профиль</a>
             &nbsp;|&nbsp;
-            <a href="<?=$this->path?>user/logout"><i class="fa fa-power-off"></i> Выход</a>
+            <a href="<?=$this->path?>user/logout">Выход</a>
         </p>
 
         <?=$this->yieldView()?>
