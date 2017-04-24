@@ -1,7 +1,7 @@
 /**
  * Настройки AJAX
  *
- * @version 27.12.2016
+ * @version 24.04.2017
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -37,7 +37,7 @@ var ajax = (function () {
      *
      * @return null
      *
-     * @version 27.12.2016
+     * @version 24.04.2017
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     function error(status, text) {
@@ -45,19 +45,19 @@ var ajax = (function () {
 
         switch (status) {
             case 'timeout'    :
-                swal('Произошла ошибка', 'Время ожидания истекло', 'error');
+                app.messageModal('Произошла ошибка', 'Время ожидания истекло', 'error');
                 break;
             case 'parsererror':
-                swal('Произошла ошибка', 'Ошибка парсера', 'error');
+                app.messageModal('Произошла ошибка', 'Ошибка парсера', 'error');
                 break;
             case 'abort'      :
-                swal('Произошла ошибка', 'Запрос был отменён', 'error');
+                app.messageModal('Произошла ошибка', 'Запрос был отменён', 'error');
                 break;
             case 'error'      :
-                swal('Произошла ошибка', 'Произошла ошибка сервера: ' + text, 'error');
+                app.messageModal('Произошла ошибка', 'Произошла ошибка сервера: ' + text, 'error');
                 break;
             default           :
-                swal('Произошла ошибка', 'Неизвестная ошибка', 'error');
+                app.messageModal('Произошла ошибка', 'Неизвестная ошибка', 'error');
                 break;
         }
     }

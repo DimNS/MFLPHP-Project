@@ -1,7 +1,7 @@
 /**
  * Работа с профилем
  *
- * @version 16.11.2016
+ * @version 24.04.2017
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -48,7 +48,7 @@ var profile = (function () {
      *
      * @return null
      *
-     * @version 16.11.2016
+     * @version 24.04.2017
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangePassword = function () {
@@ -68,9 +68,9 @@ var profile = (function () {
                         $(form + ' input[name="new_password"]').val('');
                         $(form + ' input[name="old_password"]').val('');
 
-                        swal('Выполнено', result.message, 'success');
+                        app.messageModal('Выполнено', result.message, 'success');
                     } else {
-                        swal('Произошла ошибка', result.message, 'error');
+                        app.messageModal('Произошла ошибка', result.message, 'error');
                     }
                 },
                 complete: function () {
@@ -100,7 +100,7 @@ var profile = (function () {
      *
      * @return null
      *
-     * @version 16.11.2016
+     * @version 24.04.2017
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangeEmail = function () {
@@ -123,9 +123,9 @@ var profile = (function () {
                         $(form + ' input[name="new_email"]').val('');
                         $(form + ' input[name="password"]').val('');
 
-                        swal('Выполнено', result.message, 'success');
+                        app.messageModal('Выполнено', result.message, 'success');
                     } else {
-                        swal('Произошла ошибка', result.message, 'error');
+                        app.messageModal('Произошла ошибка', result.message, 'error');
                     }
                 },
                 complete: function () {
