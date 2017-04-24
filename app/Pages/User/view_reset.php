@@ -1,9 +1,3 @@
-<p>
-    <img src="<?=$this->path?>assets/img/logo.png">
-</p>
-<p class="<?=$this->message_code?>">
-    <?=$this->message_text?>
-</p>
 <form id="reset-form" action="<?=$this->path?>user/reset" method="post">
     <p>
         <label>Укажите новый пароль</label>

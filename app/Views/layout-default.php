@@ -16,6 +16,7 @@
 <body>
     <?php
     if (isset($this->external_page)) {
+        echo $this->partial($this->app_root_path . '/Views/external-page-header.php');
         echo $this->yieldView();
     } else {
         ?>
