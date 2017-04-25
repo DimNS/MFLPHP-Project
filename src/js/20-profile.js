@@ -1,7 +1,7 @@
 /**
  * Работа с профилем
  *
- * @version 24.04.2017
+ * @version 25.04.2017
  * @author Дмитрий Щербаков <atomcms@ya.ru>
  */
 
@@ -48,22 +48,22 @@ var profile = (function () {
      *
      * @return null
      *
-     * @version 24.04.2017
+     * @version 25.04.2017
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangePassword = function () {
         $('#js-profile-change-password').on('click', function () {
             ajax.waiter('show');
 
-            var form = '#js-profile-form-change-password';
+            var form = '#js-profile-change-password-form';
 
             $.ajax({
-                url     : pathRoot + 'user/change-password',
-                data    : {
+                url: pathRoot + 'user/change-password',
+                data: {
                     'new_password': $(form + ' input[name="new_password"]').val(),
                     'old_password': $(form + ' input[name="old_password"]').val()
                 },
-                success : function (result) {
+                success: function (result) {
                     if (result.error === false) {
                         $(form + ' input[name="new_password"]').val('');
                         $(form + ' input[name="old_password"]').val('');
@@ -76,7 +76,7 @@ var profile = (function () {
                 complete: function () {
                     ajax.waiter('hide');
                 },
-                error   : function (jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     ajax.error(textStatus, errorThrown);
                 }
             });
@@ -100,23 +100,23 @@ var profile = (function () {
      *
      * @return null
      *
-     * @version 24.04.2017
+     * @version 25.04.2017
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
     var _bindChangeEmail = function () {
         $('#js-profile-change-email').on('click', function () {
             ajax.waiter('show');
 
-            var form     = '#js-profile-form-change-email';
+            var form = '#js-profile-change-email-form';
             var newEmail = $(form + ' input[name="new_email"]').val();
 
             $.ajax({
-                url     : pathRoot + 'user/change-email',
-                data    : {
+                url: pathRoot + 'user/change-email',
+                data: {
                     'new_email': newEmail,
-                    'password' : $(form + ' input[name="password"]').val()
+                    'password': $(form + ' input[name="password"]').val()
                 },
-                success : function (result) {
+                success: function (result) {
                     if (result.error === false) {
                         $('#js-profile-email').text(newEmail);
 
@@ -131,7 +131,7 @@ var profile = (function () {
                 complete: function () {
                     ajax.waiter('hide');
                 },
-                error   : function (jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     ajax.error(textStatus, errorThrown);
                 }
             });

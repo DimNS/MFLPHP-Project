@@ -27,13 +27,17 @@
         </tbody>
     </table>
 
-    <div><strong>Смена пароля</strong></div>
-    <div><input type="password" name="new_password" placeholder="Новый пароль"></div>
-    <div><input type="password" name="old_password" placeholder="Старый пароль"></div>
-    <button id="js-profile-change-password">Сохранить новый пароль</button>
+    <form id="js-profile-change-password-form">
+        <div><strong>Смена пароля</strong></div>
+        <div><input type="password" name="new_password" placeholder="Новый пароль"></div>
+        <div><input type="password" name="old_password" placeholder="Старый пароль"></div>
+        <button id="js-profile-change-password">Сохранить новый пароль</button>
+    </form>
 
-    <div><strong>Смена адреса электронной почты</strong></div>
-    <div><input type="text" name="new_email" placeholder="Новый адрес электронной почты"></div>
-    <div><input type="password" name="password" placeholder="Текущий пароль"></div>
-    <button id="js-profile-change-email">Сохранить новый адрес электронной почты</button>
+    <form id="js-profile-change-email-form">
+        <div><strong>Смена адреса электронной почты</strong></div>
+        <div><input type="text" name="new_email" placeholder="Новый адрес электронной почты"></div>
+        <div><input type="password" name="password" placeholder="Текущий пароль"></div>
+        <button id="js-profile-change-email">Сохранить новый адрес электронной почты</button>
+    </form>
 </div>
