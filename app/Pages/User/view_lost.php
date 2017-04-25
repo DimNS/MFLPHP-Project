@@ -1,3 +1,4 @@
+<h3 class="text-center">Сброс пароля</h3>
 <form id="lost-form" action="<?=$this->path?>user/lost" method="post">
     <div>
         <label>Укажите адрес электронной почты на которую зарегистрирован пользователь</label>

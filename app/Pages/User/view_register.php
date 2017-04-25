@@ -1,3 +1,4 @@
+<h3 class="text-center">Регистрация нового аккаунта</h3>
 <form id="signup-form" action="<?=$this->path?>user/register" method="post">
     <div>
         <label>Ваше имя</label>

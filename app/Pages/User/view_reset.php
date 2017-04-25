@@ -1,3 +1,4 @@
+<h3 class="text-center">Восстановление пароля</h3>
 <form id="reset-form" action="<?=$this->path?>user/reset" method="post">
     <div>
         <label>Укажите новый пароль</label>
