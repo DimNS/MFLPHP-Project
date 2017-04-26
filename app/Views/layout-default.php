@@ -19,29 +19,9 @@
         echo $this->partial($this->app_root_path . '/Views/external-page-header.php');
         echo $this->yieldView();
     } else {
-        ?>
-        <div>
-            <a href="<?=$this->path?>"><img src="<?=$this->path?>assets/img/logo.png"></a>
-        </div>
-        <div>
-            Вы вошли как: <strong><?=$this->userinfo->name?></strong>
-        </div>
-        <div>
-            <a href="<?=$this->path?>">Главная</a>
-            &nbsp;|&nbsp;
-            <a href="<?=$this->path?>user">Профиль</a>
-            &nbsp;|&nbsp;
-            <a href="<?=$this->path?>user/logout">Выход</a>
-        </div>
-
-        <?=$this->yieldView()?>
-
-        <?php
-        $begin_year = 2016;
-        $copy_date = (date('Y') == $begin_year ? $begin_year : $begin_year . '-' . date('Y'));
-        ?>
-        <?=$copy_date?> &copy; <a href="https://github.com/dimns">DimNS</a>
-        <?php
+        echo $this->partial($this->app_root_path . '/Views/internal-page-header.php');
+        echo $this->yieldView();
+        echo $this->partial($this->app_root_path . '/Views/internal-page-footer.php');
     }
     ?>
 
