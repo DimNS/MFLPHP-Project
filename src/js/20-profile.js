@@ -142,3 +142,7 @@ var profile = (function () {
         init: init
     };
 })();
+
+if ($('#js-page-profile').length) {
+    profile.init();
+}
