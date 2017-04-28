@@ -8,7 +8,6 @@
 
 namespace MyApp;
 
-use MFLPHP\Helpers\Middleware;
 use MFLPHP\Pages\Main;
 use MFLPHP\Pages\User;
 
