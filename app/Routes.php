@@ -8,7 +8,7 @@
 
 namespace MyApp;
 
-use MFLPHP\Pages\Main;
+use MFLPHP\Pages\Index;
 use MFLPHP\Pages\User;
 
 //
@@ -22,7 +22,7 @@ use MFLPHP\Pages\User;
 //      ,M'
 //      MV
 //     AW
-$klein->respond('GET', '/', [new Main\ControllerStart(), 'start']);
+$klein->respond('GET', '/', [new Index\ControllerIndex(), 'start']);
 
 //
 //           AW
@@ -36,7 +36,7 @@ $klein->respond('GET', '/', [new Main\ControllerStart(), 'start']);
 //      MV
 //     AW
 $klein->with('/user', function () use ($klein) {
-    $klein->respond('GET'          , ''                , [new User\ControllerGetProfile(), 'start']);
+    $klein->respond('GET'          , ''                , [new User\ControllerIndex(), 'start']);
     $klein->respond('POST'         , '/change-password', [new User\ControllerChangePassword(), 'start']);
     $klein->respond('POST'         , '/change-email'   , [new User\ControllerChangeEmail(), 'start']);
     $klein->respond('POST'         , '/login'          , [new User\ControllerLogin(), 'start']);
