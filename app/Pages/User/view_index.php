@@ -10,7 +10,9 @@
             </tr>
             <tr>
                 <td>Дата регистрации:</td>
-                <td><strong><?=$this->di->carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->created_at)->format('d-m-Y')?></strong></td>
+                <td>
+                    <strong><?=$this->di->carbon->createFromFormat('Y-m-d H:i:s', $this->userinfo->created_at)->format('d-m-Y')?></strong>
+                </td>
             </tr>
             <tr>
                 <td>Электронная почта:</td>

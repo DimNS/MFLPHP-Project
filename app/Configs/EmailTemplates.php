@@ -3,7 +3,7 @@
  * Шаблоны электронных писем
  *
  * @version 13.09.2016
- * @author Дмитрий Щербаков <atomcms@ya.ru>
+ * @author  Дмитрий Щербаков <atomcms@ya.ru>
  */
 
 namespace MFLPHP\Configs;

@@ -35,7 +35,7 @@ var app = (function () {
     };
 
     return {
-        init: init,
+        init        : init,
         messageModal: messageModal
     };
 })();

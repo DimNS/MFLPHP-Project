@@ -3,7 +3,7 @@
  * Параметры
  *
  * @version 22.04.2017
- * @author Дмитрий Щербаков <atomcms@ya.ru>
+ * @author  Дмитрий Щербаков <atomcms@ya.ru>
  */
 
 namespace MFLPHP\Configs;
@@ -24,10 +24,10 @@ class Settings
     const PATH_SHORT_ROOT = '/';
 
     // База данных
-    const DB_HOST     = 'localhost';
-    const DB_PORT     = 3306;
+    const DB_HOST = 'localhost';
+    const DB_PORT = 3306;
     const DB_DATABASE = 'mflphp';
-    const DB_USER     = 'root';
+    const DB_USER = 'root';
     const DB_PASSWORD = '';
 
     // Временная зона сервера для инициализации библиотеки Carbon

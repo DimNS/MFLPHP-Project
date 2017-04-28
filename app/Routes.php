@@ -3,7 +3,7 @@
  * Маршруты приложения
  *
  * @version 09.09.2016
- * @author Дмитрий Щербаков <atomcms@ya.ru>
+ * @author  Дмитрий Щербаков <atomcms@ya.ru>
  */
 
 namespace MyApp;
@@ -57,8 +57,8 @@ $klein->with('/user', function () use ($klein) {
 //      `Ybmd9'.JMML  JMML..JMML.  .JMML. `Mbmo  `Mbmo  MMbmmd'.JMMmmmmMMM .JMML.   .JMML.   `Ybmd9'.JMML.
 //                                                      MM
 //                                                    .JMML.
-$klein->onHttpError(function($code, $router) {
-    $router->service()->uri           = $router->request()->uri();
+$klein->onHttpError(function ($code, $router) {
+    $router->service()->uri = $router->request()->uri();
     $router->service()->external_page = true;
 
     switch ($code) {

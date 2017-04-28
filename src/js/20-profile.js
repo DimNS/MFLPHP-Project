@@ -21,8 +21,6 @@ var profile = (function () {
     /**
      * Инициализация приложения
      *
-     * @return null
-     *
      * @version 06.09.2016
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
@@ -46,8 +44,6 @@ var profile = (function () {
     /**
      * Запрос на изменение пароля
      *
-     * @return null
-     *
      * @version 25.04.2017
      * @author Дмитрий Щербаков <atomcms@ya.ru>
      */
@@ -55,18 +51,20 @@ var profile = (function () {
         $('#js-profile-change-password').on('click', function () {
             ajax.waiter('show');
 
-            var form = '#js-profile-change-password-form';
+            var form        = $('#js-profile-change-password-form');
+            var newPassword = form.find('input[name="new_password"]');
+            var oldPassword = form.find('input[name="old_password"]');
 
             $.ajax({
-                url: pathRoot + 'user/change-password',
-                data: {
-                    'new_password': $(form + ' input[name="new_password"]').val(),
-                    'old_password': $(form + ' input[name="old_password"]').val()
+                url     : pathRoot + 'user/change-password',
+                data    : {
+                    'new_password': newPassword.val(),
+                    'old_password': oldPassword.val()
                 },
-                success: function (result) {
+                success : function (result) {
                     if (result.error === false) {
-                        $(form + ' input[name="new_password"]').val('');
-                        $(form + ' input[name="old_password"]').val('');
+                        newPassword.val('');
+                        oldPassword.val('');
 
                         app.messageModal('Выполнено', result.message, 'success');
                     } else {
@@ -76,7 +74,7 @@ var profile = (function () {
                 complete: function () {
                     ajax.waiter('hide');
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error   : function (jqXHR, textStatus, errorThrown) {
                     ajax.error(textStatus, errorThrown);
                 }
             });
@@ -107,21 +105,23 @@ var profile = (function () {
         $('#js-profile-change-email').on('click', function () {
             ajax.waiter('show');
 
-            var form = '#js-profile-change-email-form';
-            var newEmail = $(form + ' input[name="new_email"]').val();
+            var form          = $('#js-profile-change-email-form');
+            var newEmail      = form.find('input[name="new_email"]');
+            var password      = form.find('input[name="password"]');
+            var newEmailValue = form.find('input[name="new_email"]').val();
 
             $.ajax({
-                url: pathRoot + 'user/change-email',
-                data: {
-                    'new_email': newEmail,
-                    'password': $(form + ' input[name="password"]').val()
+                url     : pathRoot + 'user/change-email',
+                data    : {
+                    'new_email': newEmailValue,
+                    'password' : password.val()
                 },
-                success: function (result) {
+                success : function (result) {
                     if (result.error === false) {
-                        $('#js-profile-email').text(newEmail);
+                        $('#js-profile-email').text(newEmailValue);
 
-                        $(form + ' input[name="new_email"]').val('');
-                        $(form + ' input[name="password"]').val('');
+                        newEmail.val('');
+                        password.val('');
 
                         app.messageModal('Выполнено', result.message, 'success');
                     } else {
@@ -131,7 +131,7 @@ var profile = (function () {
                 complete: function () {
                     ajax.waiter('hide');
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error   : function (jqXHR, textStatus, errorThrown) {
                     ajax.error(textStatus, errorThrown);
                 }
             });

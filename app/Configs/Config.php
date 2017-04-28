@@ -3,7 +3,7 @@
  * Конфигурация
  *
  * @version 22.04.2017
- * @author Дмитрий Щербаков <atomcms@ya.ru>
+ * @author  Дмитрий Щербаков <atomcms@ya.ru>
  */
 
 namespace MFLPHP\Configs;
@@ -20,10 +20,8 @@ class Config
     /**
      * Конструктор
      *
-     * @return null
-     *
      * @version 13.09.2016
-     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     public function __construct()
     {
