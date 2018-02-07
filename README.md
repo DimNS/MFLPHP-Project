@@ -1,3 +1,5 @@
+## Project is deprecated.
+
 # Шаблон проекта использующий микро-фреймворк [MFLPHP](https://github.com/DimNS/MFLPHP)
 
 # 1. Установка и использование
